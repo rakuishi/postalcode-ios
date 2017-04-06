@@ -14,8 +14,11 @@
 {
     [super viewDidLoad];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(0.f, 0.f, 50.f, 0.f);
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.f, 0.f, 50.f, 0.f);
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    CGFloat adHeight = bounds.size.width / 320.f * 50.f;
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(0.f, 0.f, adHeight, 0.f);
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.f, 0.f, adHeight, 0.f);
     self.tableView.sectionIndexColor = POSTALCODE_BASE_COLOR;
     self.tableView.sectionIndexBackgroundColor = [UIColor colorWithWhite:1.f alpha:0.5f];
 

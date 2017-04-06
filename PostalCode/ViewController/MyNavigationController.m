@@ -55,10 +55,11 @@
     [self.indicater startAnimating];
     [self.loadingView addSubview:self.indicater];
     
-    CGFloat width = (bounds.size.width - 320.f) / 2.f;
-    CGFloat height = (self.tabBarController) ? bounds.size.height - 49.f - 50.f : bounds.size.height - 50.f;
+    CGFloat x = 0;
+    CGFloat adHeight = bounds.size.width / 320.f * 50.f;
+    CGFloat y = (self.tabBarController) ? bounds.size.height - 49.f - adHeight : bounds.size.height - adHeight;
     
-    self.adView = [[NADView alloc] initWithFrame:CGRectMake(width, height, 320.f, 50.f)];
+    self.adView = [[NADView alloc] initWithFrame:CGRectMake(x, y, 320.f, 50.f) isAdjustAdSize:true];
     [self.adView setNendID:NEND_API_KEY spotID:NEND_SPOT_ID];
     [self.adView setDelegate:self];
     [self.adView setBackgroundColor:[UIColor whiteColor]];
