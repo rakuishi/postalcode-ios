@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NADView.h"
+#import <NendAd/NADView.h>
 
 @interface MyNavigationController : UINavigationController <NADViewDelegate>
 
