@@ -12,7 +12,7 @@ db = SQLite3::Database.new('data.sqlite')
 db.execute('CREATE TABLE data (postal_code varchar(16), state_h varchar(16), city_town_h varchar(16), street_h varchar(16), state_k varchar(16), city_town_k varchar(16), street_k varchar(16));')
 db.execute('CREATE INDEX idx on data(postal_code, state_k, city_town_k, street_k);')
 
-CSV.read('x-ken-all.csv', encoding: 'Shift_JIS:UTF-8', headers: false).each do |data|
+CSV.read('KEN_ALL.CSV', encoding: 'Shift_JIS:UTF-8', headers: false).each do |data|
   next if data[2].length == 0
 
   postal_code = data[2]
