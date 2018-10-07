@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, kSection) {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == kSectionAbout) {
-        return 3;
+        return 4;
     }
     return 1;
 }
@@ -59,14 +59,22 @@ typedef NS_ENUM(NSUInteger, kSection) {
         if (indexPath.row == 0) {
             cell.textLabel.text = @"バージョン";
             cell.detailTextLabel.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 1) {
             cell.textLabel.text = @"郵便番号データ";
             cell.detailTextLabel.text = @"2018年9月28日";
+            cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 2) {
             cell.textLabel.text = @"開発";
             cell.detailTextLabel.text = @"rakuishi";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        } else {
+            cell.textLabel.text = @"プライバシーポリシー";
+            cell.detailTextLabel.text = @"";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         }
         
@@ -85,7 +93,9 @@ typedef NS_ENUM(NSUInteger, kSection) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == kSectionAbout && indexPath.row == 2) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://rakuishi.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://rakuishi.com"]];
+    } else if (indexPath.section == kSectionAbout && indexPath.row == 3) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://rakuishi.github.io/privacy-policy/postalcode.html"]];
     } else if (indexPath.section == kSectionFeedback) {
         [self sendFeedback];
     }
