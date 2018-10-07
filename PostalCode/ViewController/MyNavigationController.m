@@ -23,29 +23,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    // UINavigationBar の 下 1px の黒線を削除する
-    // for (UIView *subview in self.navigationBar.subviews) {
-    //     for (UIView *subsubview in subview.subviews) {
-    //         if ([subsubview isKindOfClass:[UIImageView class]]) {
-    //             // [subsubview removeFromSuperview];
-    //             subsubview.hidden = YES;
-    //             break;
-    //         }
-    //     }
-    // }
-    
-    // id UINavigationBarAppearanceProxy = [UINavigationBar appearanceWhenContainedIn:[MyNavigationController class], nil];
-    // NSDictionary *attributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    // [UINavigationBarAppearanceProxy setTitleTextAttributes:attributes];
-    
     self.navigationBar.tintColor = POSTALCODE_BASE_COLOR;
-    // self.navigationBar.translucent = NO;
     self.tabBarController.tabBar.tintColor = POSTALCODE_BASE_COLOR;
-    // self.tabBarController.tabBar.translucent = NO;
     
-    CGRect bounds = [[UIScreen mainScreen] bounds];
-    
-    self.loadingView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 65.f, bounds.size.width, bounds.size.height - 65.f - 49.f)];
+
+    self.loadingView = [[UIView alloc] initWithFrame:[self loadingViewFrame]];
     self.loadingView.backgroundColor = [UIColor whiteColor];
     self.loadingView.alpha = 0.f;
     [self.view addSubview:self.loadingView];
@@ -55,11 +37,7 @@
     [self.indicater startAnimating];
     [self.loadingView addSubview:self.indicater];
     
-    CGFloat x = 0;
-    CGFloat adHeight = bounds.size.width / 320.f * 50.f;
-    CGFloat y = (self.tabBarController) ? bounds.size.height - 49.f - adHeight : bounds.size.height - adHeight;
-    
-    self.adView = [[NADView alloc] initWithFrame:CGRectMake(x, y, 320.f, 50.f) isAdjustAdSize:true];
+    self.adView = [[NADView alloc] initWithFrame:[self adViewFrame] isAdjustAdSize:true];
     [self.adView setNendID:NEND_API_KEY spotID:NEND_SPOT_ID];
     [self.adView setDelegate:self];
     [self.adView setBackgroundColor:[UIColor whiteColor]];
@@ -73,6 +51,15 @@
     if (self.adView) {
         [self.adView resume];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    self.loadingView.frame = [self loadingViewFrame];
+    self.indicater.center = CGPointMake(self.loadingView.frame.size.width / 2.f, self.loadingView.frame.size.height / 2.f);
+    self.adView.frame = [self adViewFrame];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -116,6 +103,42 @@
 - (void)nadViewDidFinishLoad:(NADView *)adView
 {
     // ...
+}
+
+#pragma
+
+- (CGRect)loadingViewFrame
+{
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    CGFloat statusBarHeight = 20.f;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = UIApplication.sharedApplication.keyWindow;
+        statusBarHeight = window.safeAreaInsets.top;
+    }
+    CGFloat y = statusBarHeight + self.navigationBar.frame.size.height + 1.f;
+
+    return CGRectMake(0.f, y, bounds.size.width, bounds.size.height - y - 49.f);
+}
+
+- (CGRect)adViewFrame
+{
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    UIEdgeInsets safaAreaInsets = UIEdgeInsetsZero;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = UIApplication.sharedApplication.keyWindow;
+        safaAreaInsets = window.safeAreaInsets;
+    }
+
+    // https://github.com/fan-ADN/nendSDK-iOS/wiki/About-Ad-Sizes
+    CGFloat ratio = MIN(bounds.size.width / 320.f, 1.5f);
+    CGFloat width = 320.f * ratio;
+    CGFloat height = ratio * 50.f;
+    CGFloat x = (bounds.size.width - width) / 2;
+    CGFloat y = (self.tabBarController)
+        ? bounds.size.height - safaAreaInsets.bottom - 49.f - height
+        : bounds.size.height - safaAreaInsets.bottom - height;
+
+    return CGRectMake(x, y, width, height);
 }
 
 @end
