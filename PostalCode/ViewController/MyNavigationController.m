@@ -28,7 +28,11 @@
     
 
     self.loadingView = [[UIView alloc] initWithFrame:[self loadingViewFrame]];
-    self.loadingView.backgroundColor = [UIColor whiteColor];
+    if (@available(iOS 13.0, *)) {
+        self.loadingView.backgroundColor = UIColor.systemBackgroundColor;
+    } else {
+        self.loadingView.backgroundColor = UIColor.whiteColor;
+    }
     self.loadingView.alpha = 0.f;
     [self.view addSubview:self.loadingView];
     
@@ -41,6 +45,11 @@
     [self.adView setNendID:NEND_API_KEY spotID:NEND_SPOT_ID];
     [self.adView setDelegate:self];
     [self.adView setBackgroundColor:[UIColor whiteColor]];
+    if (@available(iOS 13.0, *)) {
+        [self.adView setBackgroundColor:UIColor.systemBackgroundColor];
+    } else {
+        [self.adView setBackgroundColor:UIColor.whiteColor];
+    }
     [self.adView load];
     [self.view addSubview:self.adView];
 }

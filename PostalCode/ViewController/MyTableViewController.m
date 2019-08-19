@@ -20,7 +20,12 @@
     self.tableView.contentInset = UIEdgeInsetsMake(0.f, 0.f, adHeight, 0.f);
     self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.f, 0.f, adHeight, 0.f);
     self.tableView.sectionIndexColor = POSTALCODE_BASE_COLOR;
-    self.tableView.sectionIndexBackgroundColor = [UIColor colorWithWhite:1.f alpha:0.5f];
+    
+    if (@available(iOS 13.0, *)) {
+        self.tableView.sectionIndexBackgroundColor = [UIColor.systemBackgroundColor colorWithAlphaComponent:0.5f];
+    } else {
+        self.tableView.sectionIndexBackgroundColor = [UIColor.whiteColor colorWithAlphaComponent:0.5f];
+    }
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(preferredContentSizeChanged:)
