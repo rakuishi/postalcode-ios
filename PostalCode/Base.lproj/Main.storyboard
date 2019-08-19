@@ -60,7 +60,7 @@
             <objects>
                 <tableViewController id="MYv-hw-si8" customClass="AboutViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="GuA-N3-FqW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -122,9 +122,9 @@
         <!--My Navigation Controller-->
         <scene sceneID="Gow-Qk-tGT">
             <objects>
-                <navigationController definesPresentationContext="YES" id="AIe-1r-OKz" customClass="MyNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" modalPresentationStyle="fullScreen" id="AIe-1r-OKz" customClass="MyNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xn2-HH-HFJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
