@@ -329,7 +329,7 @@
 			};
 			buildConfigurationList = 1623800A1815DCB9004C8D73 /* Build configuration list for PBXProject "PostalCode" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
