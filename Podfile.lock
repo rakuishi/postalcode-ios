@@ -1,16 +1,16 @@
 PODS:
-  - NendSDK_iOS (5.0.2)
+  - NendSDK_iOS (6.0.3)
 
 DEPENDENCIES:
   - NendSDK_iOS
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - NendSDK_iOS
 
 SPEC CHECKSUMS:
-  NendSDK_iOS: 412b3d68be41227468d808e94f5e9aee8f6cb62c
+  NendSDK_iOS: 3096bbbacec0f333fe65aa43f1f42f2c89d32913
 
-PODFILE CHECKSUM: cb52cc0513bffcab2197f5bab2e5d1241c136126
+PODFILE CHECKSUM: 9f5e638f76cdcf1c5a12ba15ffc7d70b8451bbd0
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.3
