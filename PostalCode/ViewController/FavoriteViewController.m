@@ -59,8 +59,17 @@
 
 - (void)deleteAllData
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"キャンセル" destructiveButtonTitle:@"すべての項目を削除" otherButtonTitles:nil];
-    [actionSheet showInView:self.view.window];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"すべての項目を削除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [FavoriteRepository deleteAllFavorite];
+        [self reloadAllData];
+        self.deleteButtonItem.enabled = NO;
+    }]];
+    
+    [alertController addAction:[UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (NSString *)textLabelText:(NSIndexPath *)indexPath
@@ -79,17 +88,6 @@
     [postalCode insertString:@"-" atIndex:3];
     
     return  [postalCode copy];
-}
-
-#pragma mark - UIActionSheetDelegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (actionSheet.destructiveButtonIndex == buttonIndex) {
-        [FavoriteRepository deleteAllFavorite];
-        [self reloadAllData];
-        self.deleteButtonItem.enabled = NO;
-    }
 }
 
 #pragma mark - Table view data source

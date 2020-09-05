@@ -12,6 +12,6 @@
 #import "DetailViewController.h"
 #import "MyTableViewController.h"
 
-@interface FavoriteViewController : MyTableViewController <UIActionSheetDelegate>
+@interface FavoriteViewController : MyTableViewController
 
 @end

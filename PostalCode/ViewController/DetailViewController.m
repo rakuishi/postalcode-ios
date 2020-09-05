@@ -182,8 +182,8 @@ typedef NS_ENUM(NSUInteger, kSection) {
 - (void)jumpGoogleMaps
 {
     NSString *url = [NSString stringWithFormat:@"https://maps.google.com/maps?q=%@%@%@", self.postalCodeModel.stateK, self.postalCodeModel.cityTownK, self.postalCodeModel.streetK];
-    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
 }
 
 - (void)sendMail
@@ -210,8 +210,12 @@ typedef NS_ENUM(NSUInteger, kSection) {
     NSString *address = [NSString stringWithFormat:@"%@ %@ %@", self.postalCodeModel.stateK, self.postalCodeModel.cityTownK, self.postalCodeModel.streetK];
     NSString *message = (isAlreadyExist) ? [NSString stringWithFormat:@"\"%@\"は お気に入りに登録されています", address] : [NSString stringWithFormat:@"\"%@\"が お気に入りに登録されました", address];
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"確認" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-    [alertView show];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"確認" message:message preferredStyle:UIAlertControllerStyleAlert];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate

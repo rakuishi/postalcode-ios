@@ -93,9 +93,9 @@ typedef NS_ENUM(NSUInteger, kSection) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == kSectionAbout && indexPath.row == 2) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://rakuishi.com"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://rakuishi.com"] options:@{} completionHandler:nil];
     } else if (indexPath.section == kSectionAbout && indexPath.row == 3) {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://rakuishi.github.io/privacy-policy/postalcode.html"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://rakuishi.github.io/privacy-policy/postalcode.html"] options:@{} completionHandler:nil];
     } else if (indexPath.section == kSectionFeedback) {
         [self sendFeedback];
     }
