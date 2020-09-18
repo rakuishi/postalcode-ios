@@ -42,7 +42,7 @@
     [self.loadingView addSubview:self.indicater];
     
     self.adView = [[NADView alloc] initWithFrame:[self adViewFrame] isAdjustAdSize:true];
-    [self.adView setNendID:NEND_API_KEY spotID:NEND_SPOT_ID];
+    [self.adView setNendID:NEND_SPOT_ID apiKey:NEND_API_KEY];
     [self.adView setDelegate:self];
     [self.adView setBackgroundColor:[UIColor whiteColor]];
     if (@available(iOS 13.0, *)) {
