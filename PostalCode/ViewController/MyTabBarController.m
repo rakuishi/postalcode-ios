@@ -16,13 +16,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    NSArray *items = self.tabBar.items;
-    NSArray *selectedImageNames = @[@"tabbar_select_selected", @"tabbar_search_selected", @"tabbar_star_selected"];
-    for (int i = 0; i < items.count; i++) {
-        UITabBarItem *tabBarItem = items[i];
-        tabBarItem.selectedImage = [UIImage imageNamed:selectedImageNames[i]];
-    }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handleSearchQuery:)
                                                  name:@"handleSearchQuery"
