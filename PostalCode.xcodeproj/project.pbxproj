@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1614B3372514CB5500E8B42E /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1614B3362514CB5500E8B42E /* AppTrackingTransparency.framework */; };
 		162229701DCDCCC4002150CC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1622296F1DCDCCC4002150CC /* ImageIO.framework */; };
 		162380131815DCB9004C8D73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380121815DCB9004C8D73 /* Foundation.framework */; };
 		162380151815DCB9004C8D73 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380141815DCB9004C8D73 /* CoreGraphics.framework */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1614B3362514CB5500E8B42E /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		1622296F1DCDCCC4002150CC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		1623800F1815DCB9004C8D73 /* PostalCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostalCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		162380121815DCB9004C8D73 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,6 +112,7 @@
 				162229701DCDCCC4002150CC /* ImageIO.framework in Frameworks */,
 				164554D51815DF08008D1C14 /* AdSupport.framework in Frameworks */,
 				164554D31815DF02008D1C14 /* Security.framework in Frameworks */,
+				1614B3372514CB5500E8B42E /* AppTrackingTransparency.framework in Frameworks */,
 				162380721815DE2F004C8D73 /* libsqlite3.0.dylib in Frameworks */,
 				162380151815DCB9004C8D73 /* CoreGraphics.framework in Frameworks */,
 				162380171815DCB9004C8D73 /* UIKit.framework in Frameworks */,
@@ -155,6 +158,7 @@
 		162380111815DCB9004C8D73 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1614B3362514CB5500E8B42E /* AppTrackingTransparency.framework */,
 				1622296F1DCDCCC4002150CC /* ImageIO.framework */,
 				164554D41815DF08008D1C14 /* AdSupport.framework */,
 				164554D21815DF02008D1C14 /* Security.framework */,

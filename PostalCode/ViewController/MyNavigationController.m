@@ -52,6 +52,8 @@
     }
     [self.adView load];
     [self.view addSubview:self.adView];
+    
+    [self requestTrackingAuthorizationIfPossible];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -91,7 +93,21 @@
     self.adView = nil;
 }
 
-#pragma mark -
+- (void)requestTrackingAuthorizationIfPossible
+{
+    if (@available(iOS 14.0, *)) {
+        switch ([ATTrackingManager trackingAuthorizationStatus]) {
+            case ATTrackingManagerAuthorizationStatusNotDetermined:
+                [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler: ^(ATTrackingManagerAuthorizationStatus status) {
+                }];
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+#pragma mark - Loading
 
 - (void)startLoading
 {
