@@ -145,7 +145,7 @@ typedef NS_ENUM(NSUInteger, kSection) {
 
         switch (indexPath.row) {
             case 0:
-                [self jumpGoogleMaps];
+                [self jumpMap];
                 break;
             case 1:
                 [self sendMail];
@@ -179,10 +179,18 @@ typedef NS_ENUM(NSUInteger, kSection) {
 
 #pragma mark -
 
-- (void)jumpGoogleMaps
+- (void)jumpMap
 {
-    NSString *url = [NSString stringWithFormat:@"https://maps.google.com/maps?q=%@%@%@", self.postalCodeModel.stateK, self.postalCodeModel.cityTownK, self.postalCodeModel.streetK];
-    url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+    NSString *q = [NSString stringWithFormat:@"%@%@%@", self.postalCodeModel.stateK, self.postalCodeModel.cityTownK, self.postalCodeModel.streetK];
+    q = [q stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
+    NSString *url;
+
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]] == TRUE) {
+        url = [NSString stringWithFormat:@"comgooglemaps://?q=%@", q];
+    } else {
+        url = [NSString stringWithFormat:@"http://maps.apple.com/?q=%@", q];
+    }
+    
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
 }
 
