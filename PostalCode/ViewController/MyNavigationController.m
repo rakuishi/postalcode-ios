@@ -28,11 +28,6 @@
     
 
     self.loadingView = [[UIView alloc] initWithFrame:[self loadingViewFrame]];
-    if (@available(iOS 13.0, *)) {
-        self.loadingView.backgroundColor = UIColor.systemBackgroundColor;
-    } else {
-        self.loadingView.backgroundColor = UIColor.whiteColor;
-    }
     self.loadingView.alpha = 0.f;
     [self.view addSubview:self.loadingView];
     
@@ -45,11 +40,6 @@
     [self.adView setNendID:NEND_SPOT_ID apiKey:NEND_API_KEY];
     [self.adView setDelegate:self];
     [self.adView setBackgroundColor:[UIColor whiteColor]];
-    if (@available(iOS 13.0, *)) {
-        [self.adView setBackgroundColor:UIColor.systemBackgroundColor];
-    } else {
-        [self.adView setBackgroundColor:UIColor.whiteColor];
-    }
     [self.adView load];
     [self.view addSubview:self.adView];
     
@@ -136,10 +126,8 @@
 {
     CGRect bounds = [[UIScreen mainScreen] bounds];
     CGFloat statusBarHeight = 20.f;
-    if (@available(iOS 11.0, *)) {
-        UIWindow *window = UIApplication.sharedApplication.keyWindow;
-        statusBarHeight = window.safeAreaInsets.top;
-    }
+    UIWindow *window = UIApplication.sharedApplication.keyWindow;
+    statusBarHeight = window.safeAreaInsets.top;
     CGFloat y = statusBarHeight + self.navigationBar.frame.size.height + 1.f;
 
     return CGRectMake(0.f, y, bounds.size.width, bounds.size.height - y - 49.f);
@@ -149,10 +137,8 @@
 {
     CGRect bounds = [[UIScreen mainScreen] bounds];
     UIEdgeInsets safaAreaInsets = UIEdgeInsetsZero;
-    if (@available(iOS 11.0, *)) {
-        UIWindow *window = UIApplication.sharedApplication.keyWindow;
-        safaAreaInsets = window.safeAreaInsets;
-    }
+    UIWindow *window = UIApplication.sharedApplication.keyWindow;
+    safaAreaInsets = window.safeAreaInsets;
 
     // https://github.com/fan-ADN/nendSDK-iOS/wiki/About-Ad-Sizes
     CGFloat ratio = MIN(bounds.size.width / 320.f, 1.5f);
