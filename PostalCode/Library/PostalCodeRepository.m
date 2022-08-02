@@ -9,7 +9,7 @@
 #import "PostalCodeRepository.h"
 
 #define FAVORITE         @"favorite"
-#define DATABASE_NAME    @"data_202108.sqlite"
+#define DATABASE_NAME    @"data_202207.sqlite"
 // AboutViewController の「郵便番号データ」の日付を変えるのを忘れないように
 
 @implementation PostalCodeModel

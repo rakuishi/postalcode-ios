@@ -63,7 +63,7 @@ typedef NS_ENUM(NSUInteger, kSection) {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 1) {
             cell.textLabel.text = @"郵便番号データ";
-            cell.detailTextLabel.text = @"2021年8月31日";
+            cell.detailTextLabel.text = @"2022年7月29日";
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         } else if (indexPath.row == 2) {
