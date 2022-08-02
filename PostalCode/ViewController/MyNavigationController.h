@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <NendAd/NADView.h>
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
 
-@interface MyNavigationController : UINavigationController <NADViewDelegate>
+@interface MyNavigationController : UINavigationController
 
 - (void)startLoading;
 - (void)stopLoading;

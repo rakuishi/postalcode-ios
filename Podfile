@@ -4,7 +4,7 @@ platform :ios, '12.0'
 target 'PostalCode' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
-  pod 'NendSDK_iOS'
+  pod 'Google-Mobile-Ads-SDK'
 
   # Pods for PostalCode
 

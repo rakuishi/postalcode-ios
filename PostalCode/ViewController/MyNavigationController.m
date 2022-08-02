@@ -7,10 +7,11 @@
 //
 
 #import "MyNavigationController.h"
+@import GoogleMobileAds;
 
 @interface MyNavigationController ()
 
-@property (nonatomic, strong) NADView *adView;
+@property (nonatomic, strong) GADBannerView *bannerView;
 @property (nonatomic, strong) UIView *loadingView;
 @property (nonatomic, strong) UIActivityIndicatorView *indicater;
 
@@ -25,7 +26,6 @@
 
     self.navigationBar.tintColor = POSTALCODE_BASE_COLOR;
     self.tabBarController.tabBar.tintColor = POSTALCODE_BASE_COLOR;
-    
 
     self.loadingView = [[UIView alloc] initWithFrame:[self loadingViewFrame]];
     self.loadingView.alpha = 0.f;
@@ -36,22 +36,13 @@
     [self.indicater startAnimating];
     [self.loadingView addSubview:self.indicater];
     
-    self.adView = [[NADView alloc] initWithFrame:[self adViewFrame] isAdjustAdSize:true];
-    [self.adView setNendID:NEND_SPOT_ID apiKey:NEND_API_KEY];
-    [self.adView setDelegate:self];
-    [self.adView setBackgroundColor:[UIColor whiteColor]];
-    [self.adView load];
-    [self.view addSubview:self.adView];
+    self.bannerView = [[GADBannerView alloc] initWithFrame:[self adViewFrame]];
+    self.bannerView.adUnitID = @"ca-app-pub-9983442877454265/2956248829";
+    self.bannerView.rootViewController = self;
+    [self.view addSubview:self.bannerView];
+    [self.bannerView loadRequest:[GADRequest request]];
     
     [self requestTrackingAuthorizationIfPossible];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    if (self.adView) {
-        [self.adView resume];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -60,15 +51,7 @@
 
     self.loadingView.frame = [self loadingViewFrame];
     self.indicater.center = CGPointMake(self.loadingView.frame.size.width / 2.f, self.loadingView.frame.size.height / 2.f);
-    self.adView.frame = [self adViewFrame];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    if (self.adView) {
-        [self.adView pause];
-    }
+    self.bannerView.frame = [self adViewFrame];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,8 +62,7 @@
 
 - (void)dealloc
 {
-    [self.adView setDelegate:nil];
-    self.adView = nil;
+    self.bannerView = nil;
 }
 
 - (void)requestTrackingAuthorizationIfPossible
@@ -113,15 +95,6 @@
     }];
 }
 
-#pragma mark - NADViewDelegate
-
-- (void)nadViewDidFinishLoad:(NADView *)adView
-{
-    // ...
-}
-
-#pragma
-
 - (CGRect)loadingViewFrame
 {
     CGRect bounds = [[UIScreen mainScreen] bounds];
@@ -140,7 +113,6 @@
     UIWindow *window = UIApplication.sharedApplication.keyWindow;
     safaAreaInsets = window.safeAreaInsets;
 
-    // https://github.com/fan-ADN/nendSDK-iOS/wiki/About-Ad-Sizes
     CGFloat ratio = MIN(bounds.size.width / 320.f, 1.5f);
     CGFloat width = 320.f * ratio;
     CGFloat height = ratio * 50.f;
