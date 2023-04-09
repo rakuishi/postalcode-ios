@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		160CD3172899305F00609313 /* data_202207.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 160CD3162899305F00609313 /* data_202207.sqlite */; };
 		1614B3372514CB5500E8B42E /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1614B3362514CB5500E8B42E /* AppTrackingTransparency.framework */; };
 		162229701DCDCCC4002150CC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1622296F1DCDCCC4002150CC /* ImageIO.framework */; };
 		162380131815DCB9004C8D73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380121815DCB9004C8D73 /* Foundation.framework */; };
@@ -35,6 +34,7 @@
 		164554D51815DF08008D1C14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D41815DF08008D1C14 /* AdSupport.framework */; };
 		164554D81815E0E5008D1C14 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164554D71815E0E5008D1C14 /* SelectViewController.m */; };
 		166A347D181B4B51001E13C9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166A347C181B4B51001E13C9 /* AboutViewController.m */; };
+		1689840529E2B3CF006BEBF7 /* data_202303.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1689840429E2B3CF006BEBF7 /* data_202303.sqlite */; };
 		168FFD881E8FD778003DB6D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168FFD861E8FD778003DB6D9 /* LaunchScreen.storyboard */; };
 		16FF6DA01816A02400CC30BC /* PostalCodeRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6D9D1816A02400CC30BC /* PostalCodeRepository.m */; };
 		9FAD58C341B605265AF1E500 /* libPods-PostalCodeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0661EBCB26C240196A4592 /* libPods-PostalCodeTests.a */; };
@@ -52,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		160CD3162899305F00609313 /* data_202207.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data_202207.sqlite; sourceTree = "<group>"; };
 		1614B3362514CB5500E8B42E /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		1622296F1DCDCCC4002150CC /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		1623800F1815DCB9004C8D73 /* PostalCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PostalCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +92,7 @@
 		166A347C181B4B51001E13C9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		166A347F181BCD77001E13C9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		166A3480181BCD77001E13C9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1689840429E2B3CF006BEBF7 /* data_202303.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data_202303.sqlite; sourceTree = "<group>"; };
 		168FFD871E8FD778003DB6D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		16FF6D9C1816A02400CC30BC /* PostalCodeRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostalCodeRepository.h; sourceTree = "<group>"; };
 		16FF6D9D1816A02400CC30BC /* PostalCodeRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostalCodeRepository.m; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 		162380191815DCB9004C8D73 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				160CD3162899305F00609313 /* data_202207.sqlite */,
+				1689840429E2B3CF006BEBF7 /* data_202303.sqlite */,
 				1623801A1815DCB9004C8D73 /* PostalCode-Info.plist */,
 				1623801B1815DCB9004C8D73 /* InfoPlist.strings */,
 				1623801E1815DCB9004C8D73 /* main.m */,
@@ -356,10 +356,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1623802E1815DCB9004C8D73 /* Images.xcassets in Resources */,
-				160CD3172899305F00609313 /* data_202207.sqlite in Resources */,
 				168FFD881E8FD778003DB6D9 /* LaunchScreen.storyboard in Resources */,
 				1623801D1815DCB9004C8D73 /* InfoPlist.strings in Resources */,
 				162380261815DCB9004C8D73 /* Main.storyboard in Resources */,
+				1689840529E2B3CF006BEBF7 /* data_202303.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
