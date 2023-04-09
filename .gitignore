@@ -3,3 +3,5 @@
 /*.xcodeproj/xcuserdata
 /*.xcworkspace
 /Pods
+KEN_ALL.CSV
+data.sqlite
