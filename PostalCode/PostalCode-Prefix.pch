@@ -6,8 +6,6 @@
 
 #import <Availability.h>
 
-#define NEND_API_KEY    @"0514fdf30450fc4074be69ba7179ffff29d88ef2"
-#define NEND_SPOT_ID    24657
 #define POSTALCODE_BASE_COLOR       [UIColor colorWithRed:234.f/255.f green:67.f/255.f blue:53.f/255.f alpha:1.f]
 
 #ifdef DEBUG
