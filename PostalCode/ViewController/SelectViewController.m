@@ -32,7 +32,7 @@
         self.navigationItem.leftBarButtonItem = nil;
     }
     
-    [(MyNavigationController *)self.navigationController startLoading];
+    [(BaseNavigationController *)self.navigationController startLoading];
     
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
@@ -60,7 +60,7 @@
             }
         }
         dispatch_async(q_main, ^{
-            [(MyNavigationController *)self.navigationController stopLoading];
+            [(BaseNavigationController *)self.navigationController stopLoading];
             [self.tableView reloadData];
         });
     });
@@ -71,7 +71,7 @@
     // 「読み込み中」が表示された状態で「戻る」が押された場合に、「読み込み中」が表示され続けてしまう問題を修正
     // http://ameblo.jp/satoko-ohtsuki/entry-11369448573.html
     if ([self.navigationController.viewControllers indexOfObject:self] == NSNotFound) {
-        [(MyNavigationController *)self.navigationController stopLoading];
+        [(BaseNavigationController *)self.navigationController stopLoading];
     }
     [super viewWillDisappear:animated];
 }

@@ -23,12 +23,12 @@
 		1623803F1815DCB9004C8D73 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623803D1815DCB9004C8D73 /* InfoPlist.strings */; };
 		162380411815DCB9004C8D73 /* PostalCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380401815DCB9004C8D73 /* PostalCodeTests.m */; };
 		162380721815DE2F004C8D73 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380711815DE2F004C8D73 /* libsqlite3.0.dylib */; };
-		1623807E1815DEBA004C8D73 /* MyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380751815DEBA004C8D73 /* MyNavigationController.m */; };
+		1623807E1815DEBA004C8D73 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380751815DEBA004C8D73 /* BaseNavigationController.m */; };
 		1623807F1815DEBA004C8D73 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380771815DEBA004C8D73 /* DetailViewController.m */; };
 		162380801815DEBA004C8D73 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380791815DEBA004C8D73 /* FavoriteViewController.m */; };
 		162380811815DEBA004C8D73 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1623807B1815DEBA004C8D73 /* SearchViewController.m */; };
-		1625AEDF18F0223500E9FD93 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1625AEDE18F0223500E9FD93 /* MyTableViewController.m */; };
-		163442B01815F889006C12F6 /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163442AF1815F889006C12F6 /* MyTabBarController.m */; };
+		1625AEDF18F0223500E9FD93 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1625AEDE18F0223500E9FD93 /* BaseTableViewController.m */; };
+		163442B01815F889006C12F6 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163442AF1815F889006C12F6 /* BaseTabBarController.m */; };
 		164554D31815DF02008D1C14 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D21815DF02008D1C14 /* Security.framework */; };
 		164554D51815DF08008D1C14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D41815DF08008D1C14 /* AdSupport.framework */; };
 		164554D81815E0E5008D1C14 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164554D71815E0E5008D1C14 /* SelectViewController.m */; };
@@ -70,18 +70,18 @@
 		1623803C1815DCB9004C8D73 /* PostalCodeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PostalCodeTests-Info.plist"; sourceTree = "<group>"; };
 		162380401815DCB9004C8D73 /* PostalCodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostalCodeTests.m; sourceTree = "<group>"; };
 		162380711815DE2F004C8D73 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		162380741815DEBA004C8D73 /* MyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationController.h; sourceTree = "<group>"; };
-		162380751815DEBA004C8D73 /* MyNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationController.m; sourceTree = "<group>"; };
+		162380741815DEBA004C8D73 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		162380751815DEBA004C8D73 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		162380761815DEBA004C8D73 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		162380771815DEBA004C8D73 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		162380781815DEBA004C8D73 /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
 		162380791815DEBA004C8D73 /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
 		1623807A1815DEBA004C8D73 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		1623807B1815DEBA004C8D73 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		1625AEDD18F0223500E9FD93 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
-		1625AEDE18F0223500E9FD93 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
-		163442AE1815F889006C12F6 /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
-		163442AF1815F889006C12F6 /* MyTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarController.m; sourceTree = "<group>"; };
+		1625AEDD18F0223500E9FD93 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		1625AEDE18F0223500E9FD93 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		163442AE1815F889006C12F6 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
+		163442AF1815F889006C12F6 /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
 		164554D21815DF02008D1C14 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		164554D41815DF08008D1C14 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		164554D61815E0E5008D1C14 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				16FF6D971816A02400CC30BC /* Library */,
-				1625AEE018F033FD00E9FD93 /* MyViewController */,
+				16654CCE2A2A891500F4CE43 /* BaseViewController */,
 				162380731815DEBA004C8D73 /* ViewController */,
 				16654CCA2A2A198800F4CE43 /* Cell */,
 				162380211815DCB9004C8D73 /* AppDelegate.h */,
@@ -237,20 +237,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		1625AEE018F033FD00E9FD93 /* MyViewController */ = {
-			isa = PBXGroup;
-			children = (
-				163442AE1815F889006C12F6 /* MyTabBarController.h */,
-				163442AF1815F889006C12F6 /* MyTabBarController.m */,
-				1625AEDD18F0223500E9FD93 /* MyTableViewController.h */,
-				1625AEDE18F0223500E9FD93 /* MyTableViewController.m */,
-				162380741815DEBA004C8D73 /* MyNavigationController.h */,
-				162380751815DEBA004C8D73 /* MyNavigationController.m */,
-			);
-			name = MyViewController;
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		16654CCA2A2A198800F4CE43 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +244,19 @@
 				16654CCB2A2A19F000F4CE43 /* RightDetailTableViewCell.m */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		16654CCE2A2A891500F4CE43 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				163442AE1815F889006C12F6 /* BaseTabBarController.h */,
+				163442AF1815F889006C12F6 /* BaseTabBarController.m */,
+				1625AEDD18F0223500E9FD93 /* BaseTableViewController.h */,
+				1625AEDE18F0223500E9FD93 /* BaseTableViewController.m */,
+				162380741815DEBA004C8D73 /* BaseNavigationController.h */,
+				162380751815DEBA004C8D73 /* BaseNavigationController.m */,
+			);
+			path = BaseViewController;
 			sourceTree = "<group>";
 		};
 		16FF6D971816A02400CC30BC /* Library */ = {
@@ -425,15 +424,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1623807E1815DEBA004C8D73 /* MyNavigationController.m in Sources */,
+				1623807E1815DEBA004C8D73 /* BaseNavigationController.m in Sources */,
 				16654CCC2A2A19F000F4CE43 /* RightDetailTableViewCell.m in Sources */,
 				162380801815DEBA004C8D73 /* FavoriteViewController.m in Sources */,
 				162380231815DCB9004C8D73 /* AppDelegate.m in Sources */,
-				1625AEDF18F0223500E9FD93 /* MyTableViewController.m in Sources */,
+				1625AEDF18F0223500E9FD93 /* BaseTableViewController.m in Sources */,
 				162380811815DEBA004C8D73 /* SearchViewController.m in Sources */,
 				1623801F1815DCB9004C8D73 /* main.m in Sources */,
 				164554D81815E0E5008D1C14 /* SelectViewController.m in Sources */,
-				163442B01815F889006C12F6 /* MyTabBarController.m in Sources */,
+				163442B01815F889006C12F6 /* BaseTabBarController.m in Sources */,
 				16FF6DA01816A02400CC30BC /* PostalCodeRepository.m in Sources */,
 				166A347D181B4B51001E13C9 /* AboutViewController.m in Sources */,
 				1623807F1815DEBA004C8D73 /* DetailViewController.m in Sources */,

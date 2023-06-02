@@ -1,5 +1,5 @@
 //
-//  AdNavigationController.h
+//  BaseNavigationController.h
 //  PostalCode
 //
 //  Created by OCHIISHI Koichiro on 10/9/13.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
 
-@interface MyNavigationController : UINavigationController
+@interface BaseNavigationController : UINavigationController
 
 - (void)startLoading;
 - (void)stopLoading;

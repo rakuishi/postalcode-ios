@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "PostalCodeRepository.h"
-#import "MyTableViewController.h"
+#import "BaseTableViewController.h"
 #import "RightDetailTableViewCell.h"
 
-@interface DetailViewController : MyTableViewController <MFMailComposeViewControllerDelegate>
+@interface DetailViewController : BaseTableViewController <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) PostalCodeModel *postalCodeModel;
 

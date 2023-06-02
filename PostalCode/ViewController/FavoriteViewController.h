@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PostalCodeRepository.h"
 #import "DetailViewController.h"
-#import "MyTableViewController.h"
+#import "BaseTableViewController.h"
 
-@interface FavoriteViewController : MyTableViewController
+@interface FavoriteViewController : BaseTableViewController
 
 @end

@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "PostalCodeRepository.h"
 #import "DetailViewController.h"
-#import "MyTableViewController.h"
+#import "BaseTableViewController.h"
 
-@interface SearchViewController : MyTableViewController <UISearchBarDelegate>
+@interface SearchViewController : BaseTableViewController <UISearchBarDelegate>
 
 - (void)searchQuery:(NSString *)query;
 

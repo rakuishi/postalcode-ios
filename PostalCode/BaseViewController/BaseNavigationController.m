@@ -1,15 +1,15 @@
 //
-//  AdNavigationController.m
+//  BaseNavigationController.m
 //  PostalCode
 //
 //  Created by OCHIISHI Koichiro on 10/9/13.
 //  Copyright (c) 2013 OCHIISHI Koichiro. All rights reserved.
 //
 
-#import "MyNavigationController.h"
+#import "BaseNavigationController.h"
 @import GoogleMobileAds;
 
-@interface MyNavigationController ()
+@interface BaseNavigationController ()
 
 @property (nonatomic, strong) GADBannerView *bannerView;
 @property (nonatomic, strong) UIView *loadingView;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation MyNavigationController
+@implementation BaseNavigationController
 
 - (void)viewDidLoad
 {

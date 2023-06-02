@@ -1,5 +1,5 @@
 //
-//  MyTableViewController.h
+//  BaseTableViewController.h
 //  PostalCode
 //
 //  Created by OCHIISHI Koichiro on 4/5/14.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyNavigationController.h"
+#import "BaseNavigationController.h"
 
-@interface MyTableViewController : UITableViewController
+@interface BaseTableViewController : UITableViewController
 
 @end

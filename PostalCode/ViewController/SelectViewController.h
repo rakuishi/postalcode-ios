@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PostalCodeRepository.h"
 #import "DetailViewController.h"
-#import "MyTableViewController.h"
+#import "BaseTableViewController.h"
 
 typedef NS_ENUM(NSUInteger, SelectedAddress) {
     SelectedAddressState    = 0,    // 都道府県
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, SelectedAddress) {
     SelectedAddressStreet   = 2,    // 区群
 };
 
-@interface SelectViewController : MyTableViewController
+@interface SelectViewController : BaseTableViewController
 
 @property (nonatomic, assign) SelectedAddress selectedAddress;
 @property (nonatomic, strong) NSString *selectedState;

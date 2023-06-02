@@ -1,14 +1,14 @@
 //
-//  MyTableViewController.m
+//  BaseTableViewController.m
 //  PostalCode
 //
 //  Created by OCHIISHI Koichiro on 4/5/14.
 //  Copyright (c) 2014 OCHIISHI Koichiro. All rights reserved.
 //
 
-#import "MyTableViewController.h"
+#import "BaseTableViewController.h"
 
-@implementation MyTableViewController
+@implementation BaseTableViewController
 
 - (void)viewDidLoad
 {

@@ -1,15 +1,15 @@
 //
-//  MyTabBarController.m
+//  BaseTabBarController.m
 //  PostalCode
 //
 //  Created by OCHIISHI Koichiro on 2013/10/22.
 //  Copyright (c) 2013年 OCHIISHI Koichiro. All rights reserved.
 //
 
-#import "MyTabBarController.h"
+#import "BaseTabBarController.h"
 #import "SearchViewController.h"
 
-@implementation MyTabBarController
+@implementation BaseTabBarController
 
 - (void)viewDidLoad
 {
@@ -40,14 +40,14 @@
 - (void)handleSearchQuery:(NSNotification *)notification
 {
     self.selectedIndex = 1;
-    MyNavigationController *navigationController = (MyNavigationController *)self.viewControllers[1];
+    BaseNavigationController *navigationController = (BaseNavigationController *)self.viewControllers[1];
     [navigationController popToRootViewControllerAnimated:NO];
     [self performSelector:@selector(afterDelayHandleSearchQuery:) withObject:notification.object[@"query"] afterDelay:0.f];
 }
 
 - (void)afterDelayHandleSearchQuery:(NSString *)query
 {
-    MyNavigationController *navigationController = (MyNavigationController *)self.viewControllers[1];
+    BaseNavigationController *navigationController = (BaseNavigationController *)self.viewControllers[1];
     SearchViewController *viewController = [navigationController.viewControllers firstObject];
     [viewController searchQuery:query];
 }

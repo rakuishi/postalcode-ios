@@ -119,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="3385.507246376812" y="-349.55357142857139"/>
         </scene>
-        <!--My Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="Gow-Qk-tGT">
             <objects>
-                <navigationController definesPresentationContext="YES" modalPresentationStyle="fullScreen" toolbarHidden="NO" id="AIe-1r-OKz" customClass="MyNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" modalPresentationStyle="fullScreen" toolbarHidden="NO" id="AIe-1r-OKz" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xn2-HH-HFJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -138,7 +138,7 @@
         <!--都道府県-->
         <scene sceneID="Laa-E1-LW5">
             <objects>
-                <navigationController definesPresentationContext="YES" id="EvM-VI-aX0" customClass="MyNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="EvM-VI-aX0" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="都道府県" image="tabbar_select" id="9Mx-c1-VO8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Gg-CO-suI">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -197,7 +197,7 @@
         <!--お気に入り-->
         <scene sceneID="Uur-es-gI7">
             <objects>
-                <navigationController definesPresentationContext="YES" id="C6Q-4t-Hs0" customClass="MyNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="C6Q-4t-Hs0" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="2" title="お気に入り" image="tabbar_star" id="Mp4-0W-5tu"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xMT-E4-JtX">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -333,7 +333,7 @@
         <!--検索-->
         <scene sceneID="Hl0-rW-V6d">
             <objects>
-                <navigationController definesPresentationContext="YES" id="dvX-bG-tpm" customClass="MyNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="dvX-bG-tpm" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="検索" image="tabbar_search" id="FFp-wD-RBO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J6m-MV-t8V">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -347,10 +347,10 @@
             </objects>
             <point key="canvasLocation" x="1032" y="121"/>
         </scene>
-        <!--My Tab Bar Controller-->
+        <!--Base Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
-                <tabBarController id="8YX-ce-x5E" customClass="MyTabBarController" sceneMemberID="viewController">
+                <tabBarController id="8YX-ce-x5E" customClass="BaseTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>

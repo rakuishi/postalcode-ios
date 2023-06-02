@@ -78,7 +78,7 @@
     
     // 郵便番号のハイフンを消去
     query = [query stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    [(MyNavigationController *)self.navigationController startLoading];
+    [(BaseNavigationController *)self.navigationController startLoading];
     
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
@@ -96,7 +96,7 @@
         }
         
         dispatch_async(q_main, ^{
-            [(MyNavigationController *)self.navigationController stopLoading];
+            [(BaseNavigationController *)self.navigationController stopLoading];
             [self.tableView reloadData];
         });
     });

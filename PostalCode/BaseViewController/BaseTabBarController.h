@@ -1,5 +1,5 @@
 //
-//  MyTabBarController.h
+//  BaseTabBarController.h
 //  PostalCode
 //
 //  Created by OCHIISHI Koichiro on 2013/10/22.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyTabBarController : UITabBarController
+@interface BaseTabBarController : UITabBarController
 
 @end
