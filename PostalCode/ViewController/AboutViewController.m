@@ -1,5 +1,5 @@
 //
-//  InfoViewController.m
+//  AboutViewController.m
 //  PostalCode
 //
 //  Created by OCHIISHI Koichiro on 10/26/13.
