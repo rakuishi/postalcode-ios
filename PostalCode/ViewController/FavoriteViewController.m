@@ -21,6 +21,9 @@
 {
     [super viewDidLoad];
     
+    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     self.deleteButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"消去"
                                                              style:UIBarButtonItemStylePlain
                                                             target:self
@@ -102,20 +105,12 @@
     return self.objects.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [DynamicTypeHelper heightWithStyle:UITableViewCellStyleSubtitle
-                                          text:[self textLabelText:indexPath]
-                                    detailText:[self detailTextLabelText:indexPath]];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell = [DynamicTypeHelper setupDynamicTypeCell:cell style:UITableViewCellStyleSubtitle];
     cell.textLabel.text = [self textLabelText:indexPath];
     cell.detailTextLabel.text = [self detailTextLabelText:indexPath];
     

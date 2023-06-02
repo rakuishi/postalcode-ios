@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PostalCodeRepository.h"
-#import "DynamicTypeHelper.h"
 #import "DetailViewController.h"
 #import "MyTableViewController.h"
 

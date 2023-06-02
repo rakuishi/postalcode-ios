@@ -27,7 +27,6 @@
 		1623807F1815DEBA004C8D73 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380771815DEBA004C8D73 /* DetailViewController.m */; };
 		162380801815DEBA004C8D73 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380791815DEBA004C8D73 /* FavoriteViewController.m */; };
 		162380811815DEBA004C8D73 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1623807B1815DEBA004C8D73 /* SearchViewController.m */; };
-		1625AEDC18EFF74A00E9FD93 /* DynamicTypeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1625AEDB18EFF74A00E9FD93 /* DynamicTypeHelper.m */; };
 		1625AEDF18F0223500E9FD93 /* MyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1625AEDE18F0223500E9FD93 /* MyTableViewController.m */; };
 		163442B01815F889006C12F6 /* MyTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163442AF1815F889006C12F6 /* MyTabBarController.m */; };
 		164554D31815DF02008D1C14 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D21815DF02008D1C14 /* Security.framework */; };
@@ -79,8 +78,6 @@
 		162380791815DEBA004C8D73 /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
 		1623807A1815DEBA004C8D73 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		1623807B1815DEBA004C8D73 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		1625AEDA18EFF74A00E9FD93 /* DynamicTypeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicTypeHelper.h; sourceTree = "<group>"; };
-		1625AEDB18EFF74A00E9FD93 /* DynamicTypeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicTypeHelper.m; sourceTree = "<group>"; };
 		1625AEDD18F0223500E9FD93 /* MyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewController.h; sourceTree = "<group>"; };
 		1625AEDE18F0223500E9FD93 /* MyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewController.m; sourceTree = "<group>"; };
 		163442AE1815F889006C12F6 /* MyTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarController.h; sourceTree = "<group>"; };
@@ -268,8 +265,6 @@
 			children = (
 				16FF6D9C1816A02400CC30BC /* PostalCodeRepository.h */,
 				16FF6D9D1816A02400CC30BC /* PostalCodeRepository.m */,
-				1625AEDA18EFF74A00E9FD93 /* DynamicTypeHelper.h */,
-				1625AEDB18EFF74A00E9FD93 /* DynamicTypeHelper.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -441,7 +436,6 @@
 				163442B01815F889006C12F6 /* MyTabBarController.m in Sources */,
 				16FF6DA01816A02400CC30BC /* PostalCodeRepository.m in Sources */,
 				166A347D181B4B51001E13C9 /* AboutViewController.m in Sources */,
-				1625AEDC18EFF74A00E9FD93 /* DynamicTypeHelper.m in Sources */,
 				1623807F1815DEBA004C8D73 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

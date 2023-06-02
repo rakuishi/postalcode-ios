@@ -22,6 +22,8 @@
 {
     [super viewDidLoad];
 
+    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.sectionIndexTrackingBackgroundColor = [UIColor colorWithRed:206.f/255.f green:203.f/255.f blue:198.f/255.f alpha:.2f];
 
@@ -146,20 +148,12 @@
     return [self.sectionIndexTitles copy];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [DynamicTypeHelper heightWithStyle:UITableViewCellStyleSubtitle
-                                          text:[self textLabelText:indexPath]
-                                    detailText:[self detailTextLabelText:indexPath]];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell = [DynamicTypeHelper setupDynamicTypeCell:cell style:UITableViewCellStyleSubtitle];
     cell.textLabel.text = [self textLabelText:indexPath];
     cell.detailTextLabel.text = [self detailTextLabelText:indexPath];
     
