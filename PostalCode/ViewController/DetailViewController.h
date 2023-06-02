@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "PostalCodeRepository.h"
-#import "DynamicTypeHelper.h"
 #import "MyTableViewController.h"
+#import "RightDetailTableViewCell.h"
 
 @interface DetailViewController : MyTableViewController <MFMailComposeViewControllerDelegate>
 

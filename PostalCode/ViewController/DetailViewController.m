@@ -23,6 +23,9 @@ typedef NS_ENUM(NSUInteger, kSection) {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.tableView.estimatedRowHeight = 44.f;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     if ([self.postalCodeModel.streetK length]) {
         self.title = self.postalCodeModel.streetK;
@@ -87,30 +90,16 @@ typedef NS_ENUM(NSUInteger, kSection) {
     return (section == kSectionInfo) ? @"項目を長押しでコピーできます。" : nil;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == kSectionInfo) {
-        return [DynamicTypeHelper heightWithStyle:UITableViewCellStyleValue2
-                                              text:[self textLabelText:indexPath]
-                                        detailText:[self detailTextLabelText:indexPath]];
-    } else {
-        return [DynamicTypeHelper heightWithStyle:UITableViewCellStyleDefault
-                                              text:@"お気に入りに追加する"
-                                        detailText:nil];
-    }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == kSectionInfo) {
         
         static NSString *CellIdentifier = @"InfoCell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        cell = [DynamicTypeHelper setupDynamicTypeCell:cell style:UITableViewCellStyleValue2];
+        RightDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         // Configure the cell...
-        cell.textLabel.text = [self textLabelText:indexPath];
-        cell.detailTextLabel.text = [self detailTextLabelText:indexPath];
+        cell.titleLabel.text = [self textLabelText:indexPath];
+        cell.detailLabel.text = [self detailTextLabelText:indexPath];
         
         return cell;
         
@@ -118,7 +107,6 @@ typedef NS_ENUM(NSUInteger, kSection) {
         
         static NSString *CellIdentifier = @"ActionCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        cell = [DynamicTypeHelper setupDynamicTypeCell:cell style:UITableViewCellStyleDefault];
         
         // Configure the cell...
         switch (indexPath.row) {

@@ -33,6 +33,7 @@
 		164554D31815DF02008D1C14 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D21815DF02008D1C14 /* Security.framework */; };
 		164554D51815DF08008D1C14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D41815DF08008D1C14 /* AdSupport.framework */; };
 		164554D81815E0E5008D1C14 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164554D71815E0E5008D1C14 /* SelectViewController.m */; };
+		16654CCC2A2A19F000F4CE43 /* RightDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16654CCB2A2A19F000F4CE43 /* RightDetailTableViewCell.m */; };
 		166A347D181B4B51001E13C9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166A347C181B4B51001E13C9 /* AboutViewController.m */; };
 		1689840529E2B3CF006BEBF7 /* data_202303.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 1689840429E2B3CF006BEBF7 /* data_202303.sqlite */; };
 		168FFD881E8FD778003DB6D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168FFD861E8FD778003DB6D9 /* LaunchScreen.storyboard */; };
@@ -88,6 +89,8 @@
 		164554D41815DF08008D1C14 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		164554D61815E0E5008D1C14 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
 		164554D71815E0E5008D1C14 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
+		16654CCB2A2A19F000F4CE43 /* RightDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightDetailTableViewCell.m; sourceTree = "<group>"; };
+		16654CCD2A2A1A0400F4CE43 /* RightDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightDetailTableViewCell.h; sourceTree = "<group>"; };
 		166A347B181B4B51001E13C9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		166A347C181B4B51001E13C9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		166A347F181BCD77001E13C9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 				16FF6D971816A02400CC30BC /* Library */,
 				1625AEE018F033FD00E9FD93 /* MyViewController */,
 				162380731815DEBA004C8D73 /* ViewController */,
+				16654CCA2A2A198800F4CE43 /* Cell */,
 				162380211815DCB9004C8D73 /* AppDelegate.h */,
 				162380221815DCB9004C8D73 /* AppDelegate.m */,
 				162380241815DCB9004C8D73 /* Main.storyboard */,
@@ -248,6 +252,15 @@
 			);
 			name = MyViewController;
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		16654CCA2A2A198800F4CE43 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				16654CCD2A2A1A0400F4CE43 /* RightDetailTableViewCell.h */,
+				16654CCB2A2A19F000F4CE43 /* RightDetailTableViewCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		16FF6D971816A02400CC30BC /* Library */ = {
@@ -418,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1623807E1815DEBA004C8D73 /* MyNavigationController.m in Sources */,
+				16654CCC2A2A19F000F4CE43 /* RightDetailTableViewCell.m in Sources */,
 				162380801815DEBA004C8D73 /* FavoriteViewController.m in Sources */,
 				162380231815DCB9004C8D73 /* AppDelegate.m in Sources */,
 				1625AEDF18F0223500E9FD93 /* MyTableViewController.m in Sources */,
