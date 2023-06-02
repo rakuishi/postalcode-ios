@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, kSection) {
 
 #pragma mark -
 
-- (NSString *)textLabelText:(NSIndexPath *)indexPath
+- (NSString *)getPrimaryLabelText:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
         case 0:
@@ -56,7 +56,7 @@ typedef NS_ENUM(NSUInteger, kSection) {
     }
 }
 
-- (NSString *)detailTextLabelText:(NSIndexPath *)indexPath
+- (NSString *)getSecondaryLabelText:(NSIndexPath *)indexPath
 {
     switch (indexPath.row) {
         case 0: {
@@ -98,8 +98,8 @@ typedef NS_ENUM(NSUInteger, kSection) {
         RightDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
         // Configure the cell...
-        cell.titleLabel.text = [self textLabelText:indexPath];
-        cell.detailLabel.text = [self detailTextLabelText:indexPath];
+        cell.primaryLabel.text = [self getPrimaryLabelText:indexPath];
+        cell.secondaryLabel.text = [self getSecondaryLabelText:indexPath];
         
         return cell;
         

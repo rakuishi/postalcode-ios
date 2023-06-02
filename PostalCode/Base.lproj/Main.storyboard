@@ -296,8 +296,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="detailLabel" destination="skl-6g-0aB" id="KJP-eX-wz8"/>
-                                    <outlet property="titleLabel" destination="qBg-h3-7PQ" id="TGi-D0-kEJ"/>
+                                    <outlet property="primaryLabel" destination="qBg-h3-7PQ" id="CjP-vg-WOd"/>
+                                    <outlet property="secondaryLabel" destination="skl-6g-0aB" id="hV2-pt-3iF"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActionCell" textLabel="FXB-14-tag" style="IBUITableViewCellStyleDefault" id="epl-At-MjU">

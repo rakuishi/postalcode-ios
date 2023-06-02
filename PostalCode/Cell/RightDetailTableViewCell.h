@@ -10,7 +10,7 @@
 
 @interface RightDetailTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
-@property (nonatomic, strong) IBOutlet UILabel *detailLabel;
+@property (nonatomic, strong) IBOutlet UILabel *primaryLabel;
+@property (nonatomic, strong) IBOutlet UILabel *secondaryLabel;
 
 @end
