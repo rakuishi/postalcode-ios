@@ -160,9 +160,11 @@ typedef NS_ENUM(NSUInteger, kSection) {
 
 - (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIPasteboard *board = [UIPasteboard generalPasteboard];
-    [board setValue:cell.detailTextLabel.text forPasteboardType:@"public.utf8-plain-text"];
+    if (indexPath.section == kSectionInfo) {
+        RightDetailTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        UIPasteboard *board = [UIPasteboard generalPasteboard];
+        [board setValue:cell.secondaryLabel.text forPasteboardType:@"public.utf8-plain-text"];
+    }
 }
 
 #pragma mark -
