@@ -31,7 +31,7 @@
     self.loadingView.alpha = 0.f;
     [self.view addSubview:self.loadingView];
     
-    self.indicater = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.indicater = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
     self.indicater.center = CGPointMake(self.loadingView.frame.size.width / 2.f, self.loadingView.frame.size.height / 2.f);
     [self.indicater startAnimating];
     [self.loadingView addSubview:self.indicater];
