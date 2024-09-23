@@ -99,8 +99,8 @@
 {
     CGRect bounds = [[UIScreen mainScreen] bounds];
     CGFloat statusBarHeight = 20.f;
-    UIWindow *window = UIApplication.sharedApplication.keyWindow;
-    statusBarHeight = window.safeAreaInsets.top;
+    UIEdgeInsets safeAreaInsets = [self getSafeAreaInsets];
+    statusBarHeight = safeAreaInsets.top;
     CGFloat y = statusBarHeight + self.navigationBar.frame.size.height + 1.f;
 
     return CGRectMake(0.f, y, bounds.size.width, bounds.size.height - y - 49.f);
@@ -109,19 +109,28 @@
 - (CGRect)adViewFrame
 {
     CGRect bounds = [[UIScreen mainScreen] bounds];
-    UIEdgeInsets safaAreaInsets = UIEdgeInsetsZero;
-    UIWindow *window = UIApplication.sharedApplication.keyWindow;
-    safaAreaInsets = window.safeAreaInsets;
+    UIEdgeInsets safeAreaInsets = [self getSafeAreaInsets];
 
     CGFloat ratio = MIN(bounds.size.width / 320.f, 1.5f);
     CGFloat width = 320.f * ratio;
     CGFloat height = ratio * 50.f;
     CGFloat x = (bounds.size.width - width) / 2;
     CGFloat y = (self.tabBarController)
-        ? bounds.size.height - safaAreaInsets.bottom - 49.f - height
-        : bounds.size.height - safaAreaInsets.bottom - height;
+        ? bounds.size.height - safeAreaInsets.bottom - 49.f - height
+        : bounds.size.height - safeAreaInsets.bottom - height;
 
     return CGRectMake(x, y, width, height);
+}
+
+- (UIEdgeInsets )getSafeAreaInsets
+{
+    NSArray *scenes = [UIApplication.sharedApplication connectedScenes].allObjects;
+    if ([scenes.firstObject isKindOfClass:[UIWindowScene class]]) {
+        UIWindowScene *scene = (UIWindowScene *)scenes.firstObject;
+        return scene.windows.firstObject.safeAreaInsets;
+    }
+
+    return UIEdgeInsetsZero;
 }
 
 @end
