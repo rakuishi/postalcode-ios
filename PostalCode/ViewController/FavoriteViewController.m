@@ -35,11 +35,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // UITableViewController は clearsSelectionOnViewWillAppear により、
+    // super 時に、選択中の Row を非選択状態に戻すため、super 前に選択中の Row があるかを取得しておく
+    bool hasSelectedRow = self.tableView.indexPathForSelectedRow != nil;
     [super viewWillAppear:animated];
-    
-    // 他 UITabBarController.viewControllers から選択された場合に、reload 処理を行う
-    // self.tableView deselectRowAtIndexPath: animated: を有効にする為に
-    if (self.tabBarController.selectedIndex != 2) {
+
+    // self.tableView deselectRowAtIndexPath: animated: を有効にする為に、
+    // 他 UITabBarController.viewControllers から選択された場合のみ、reload 処理を行う
+    if (!hasSelectedRow) {
         [self reloadAllData];
     }
     
