@@ -145,26 +145,25 @@ typedef NS_ENUM(NSUInteger, kSection) {
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
+- (nullable UIContextMenuConfiguration *)tableView:(UITableView *)tableView contextMenuConfigurationForRowAtIndexPath:(nonnull NSIndexPath *)indexPath point:(CGPoint)point
 {
-    return (indexPath.section == kSectionInfo) ? YES : NO;
-}
+    if (indexPath.section != kSectionInfo) return nil;
+    
+    return [UIContextMenuConfiguration configurationWithIdentifier:nil
+                                                   previewProvider:nil
+                                                    actionProvider:^UIMenu *(NSArray<UIMenuElement *> *suggestedActions) {
 
-- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
-{
-    if (action == @selector(copy:)) {
-        return YES;
-    }
-    return NO;
-}
+            UIAction *action = [UIAction actionWithTitle:@"コピー"
+                                                    image:[UIImage systemImageNamed:@"doc.on.doc"]
+                                               identifier:nil
+                                                  handler:^(__kindof UIAction * _Nonnull action) {
+                RightDetailTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+                UIPasteboard *board = [UIPasteboard generalPasteboard];
+                [board setValue:cell.secondaryLabel.text forPasteboardType:@"public.utf8-plain-text"];
+            }];
 
-- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
-{
-    if (indexPath.section == kSectionInfo) {
-        RightDetailTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        UIPasteboard *board = [UIPasteboard generalPasteboard];
-        [board setValue:cell.secondaryLabel.text forPasteboardType:@"public.utf8-plain-text"];
-    }
+            return [UIMenu menuWithTitle:@"" children:@[action]];
+        }];
 }
 
 #pragma mark -
