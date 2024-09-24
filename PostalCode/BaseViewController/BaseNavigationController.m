@@ -67,15 +67,13 @@
 
 - (void)requestTrackingAuthorizationIfPossible
 {
-    if (@available(iOS 14.0, *)) {
-        switch ([ATTrackingManager trackingAuthorizationStatus]) {
-            case ATTrackingManagerAuthorizationStatusNotDetermined:
-                [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler: ^(ATTrackingManagerAuthorizationStatus status) {
-                }];
-                break;
-            default:
-                break;
-        }
+    switch ([ATTrackingManager trackingAuthorizationStatus]) {
+        case ATTrackingManagerAuthorizationStatusNotDetermined:
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler: ^(ATTrackingManagerAuthorizationStatus status) {
+            }];
+            break;
+        default:
+            break;
     }
 }
 
