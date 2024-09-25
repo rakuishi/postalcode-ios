@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-@interface PostalCodeModel : NSObject <NSCoding>
+@interface PostalCodeModel : NSObject <NSSecureCoding>
 
 @property (nonatomic, strong) NSString *postalCode; // 郵便番号
 @property (nonatomic, strong) NSString *stateH;     // 都道府県（平仮名）

@@ -18,13 +18,13 @@
 {
     self = [super init];
     if (self) {
-        self.postalCode = [aDecoder decodeObjectForKey:@"postalCode"];
-        self.stateH = [aDecoder decodeObjectForKey:@"stateH"];
-        self.cityTownH = [aDecoder decodeObjectForKey:@"cityTownH"];
-        self.streetH = [aDecoder decodeObjectForKey:@"streetH"];
-        self.stateK = [aDecoder decodeObjectForKey:@"stateK"];
-        self.cityTownK = [aDecoder decodeObjectForKey:@"cityTownK"];
-        self.streetK = [aDecoder decodeObjectForKey:@"streetK"];
+        self.postalCode = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"postalCode"];
+        self.stateH = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"stateH"];
+        self.cityTownH = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"cityTownH"];
+        self.streetH = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"streetH"];
+        self.stateK = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"stateK"];
+        self.cityTownK = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"cityTownK"];
+        self.streetK = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"streetK"];
     }
     return self;
 }
@@ -38,6 +38,10 @@
     [aCoder encodeObject:self.stateK forKey:@"stateK"];
     [aCoder encodeObject:self.cityTownK forKey:@"cityTownK"];
     [aCoder encodeObject:self.streetK forKey:@"streetK"];
+}
+
++ (BOOL)supportsSecureCoding {
+   return YES;
 }
 
 @end
@@ -461,10 +465,17 @@ static BOOL finalizeStatement(sqlite3 *database, sqlite3_stmt *statement)
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorite = [[NSMutableArray alloc] initWithArray:[defaults arrayForKey:FAVORITE]];
 
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
-    [favorite addObject:data];
-    [defaults setObject:[favorite copy] forKey:FAVORITE];
-    [defaults synchronize];
+    NSError *error = nil;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model
+                                          requiringSecureCoding:NO
+                                                          error:&error];
+    if (error) {
+        NSLog(@"Error archivedDataWithRootObject: %@", error);
+    } else {
+        [favorite addObject:data];
+        [defaults setObject:[favorite copy] forKey:FAVORITE];
+        [defaults synchronize];
+    }
 }
 
 + (void)deleteFavoritePostalCodeModel:(NSInteger)index
@@ -493,7 +504,14 @@ static BOOL finalizeStatement(sqlite3 *database, sqlite3_stmt *statement)
     // 重複がないか確認する
     BOOL isAlreadyExist = NO;
     for (NSData *data in favorite) {
-        PostalCodeModel *savedModel = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        NSError *error = nil;
+        PostalCodeModel *savedModel = [NSKeyedUnarchiver unarchivedObjectOfClass:[PostalCodeModel class]
+                                                                        fromData:data
+                                                                           error:&error];
+        if (error) {
+            NSLog(@"Error unarchivedObjectOfClass: %@", error);
+            return false;
+        }
         if ([savedModel.postalCode isEqualToString:model.postalCode]) {
             isAlreadyExist = YES;
             break;

@@ -78,22 +78,16 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (NSString *)textLabelText:(NSIndexPath *)indexPath
+- (NSString *)textLabelText:(PostalCodeModel *)model
 {
-    NSData *data = self.objects[indexPath.row];
-    PostalCodeModel *model = (PostalCodeModel *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
     return [NSString stringWithFormat:@"%@ %@ %@", model.stateK, model.cityTownK, model.streetK];
 }
 
-- (NSString *)detailTextLabelText:(NSIndexPath *)indexPath
+- (NSString *)detailTextLabelText:(PostalCodeModel *)model
 {
-    NSData *data = self.objects[indexPath.row];
-    PostalCodeModel *model = (PostalCodeModel *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
     NSMutableString *postalCode = [NSMutableString stringWithString:model.postalCode];
     [postalCode insertString:@"-" atIndex:3];
-    
-    return  [postalCode copy];
+    return [postalCode copy];
 }
 
 #pragma mark - Table view data source
@@ -112,10 +106,12 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    PostalCodeModel *postalCode = [self getPostalCodeModelAtIndexPath:indexPath];
+    if (postalCode == nil) return cell;
     
     // Configure the cell...
-    cell.textLabel.text = [self textLabelText:indexPath];
-    cell.detailTextLabel.text = [self detailTextLabelText:indexPath];
+    cell.textLabel.text = [self textLabelText:postalCode];
+    cell.detailTextLabel.text = [self detailTextLabelText:postalCode];
     
     return cell;
 }
@@ -148,12 +144,27 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSData *data = self.objects[indexPath.row];
-    PostalCodeModel *model = (PostalCodeModel *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    PostalCodeModel *model = [self getPostalCodeModelAtIndexPath:indexPath];
+    if (model == nil) return;
     
     DetailViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     viewController.postalCodeModel = model;
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (nullable PostalCodeModel *)getPostalCodeModelAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSData *data = self.objects[indexPath.row];
+    NSError *error = nil;
+    PostalCodeModel *model = [NSKeyedUnarchiver unarchivedObjectOfClass:[PostalCodeModel class]
+                                                                    fromData:data
+                                                                       error:&error];
+    if (error) {
+        NSLog(@"Error unarchivedObjectOfClass: %@", error);
+        return nil;
+    }
+    
+    return model;
 }
 
 @end
