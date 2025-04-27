@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,31 +12,12 @@
 		162380131815DCB9004C8D73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380121815DCB9004C8D73 /* Foundation.framework */; };
 		162380151815DCB9004C8D73 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380141815DCB9004C8D73 /* CoreGraphics.framework */; };
 		162380171815DCB9004C8D73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380161815DCB9004C8D73 /* UIKit.framework */; };
-		1623801D1815DCB9004C8D73 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623801B1815DCB9004C8D73 /* InfoPlist.strings */; };
-		1623801F1815DCB9004C8D73 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1623801E1815DCB9004C8D73 /* main.m */; };
-		162380231815DCB9004C8D73 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380221815DCB9004C8D73 /* AppDelegate.m */; };
-		162380261815DCB9004C8D73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 162380241815DCB9004C8D73 /* Main.storyboard */; };
-		1623802E1815DCB9004C8D73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1623802D1815DCB9004C8D73 /* Images.xcassets */; };
 		162380351815DCB9004C8D73 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380341815DCB9004C8D73 /* XCTest.framework */; };
 		162380361815DCB9004C8D73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380121815DCB9004C8D73 /* Foundation.framework */; };
 		162380371815DCB9004C8D73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380161815DCB9004C8D73 /* UIKit.framework */; };
-		1623803F1815DCB9004C8D73 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1623803D1815DCB9004C8D73 /* InfoPlist.strings */; };
-		162380411815DCB9004C8D73 /* PostalCodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380401815DCB9004C8D73 /* PostalCodeTests.m */; };
 		162380721815DE2F004C8D73 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380711815DE2F004C8D73 /* libsqlite3.0.dylib */; };
-		1623807E1815DEBA004C8D73 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380751815DEBA004C8D73 /* BaseNavigationController.m */; };
-		1623807F1815DEBA004C8D73 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380771815DEBA004C8D73 /* DetailViewController.m */; };
-		162380801815DEBA004C8D73 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162380791815DEBA004C8D73 /* FavoriteViewController.m */; };
-		162380811815DEBA004C8D73 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1623807B1815DEBA004C8D73 /* SearchViewController.m */; };
-		1625AEDF18F0223500E9FD93 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1625AEDE18F0223500E9FD93 /* BaseTableViewController.m */; };
-		163442B01815F889006C12F6 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163442AF1815F889006C12F6 /* BaseTabBarController.m */; };
 		164554D31815DF02008D1C14 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D21815DF02008D1C14 /* Security.framework */; };
 		164554D51815DF08008D1C14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D41815DF08008D1C14 /* AdSupport.framework */; };
-		164554D81815E0E5008D1C14 /* SelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164554D71815E0E5008D1C14 /* SelectViewController.m */; };
-		16654CCC2A2A19F000F4CE43 /* RightDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16654CCB2A2A19F000F4CE43 /* RightDetailTableViewCell.m */; };
-		166A347D181B4B51001E13C9 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166A347C181B4B51001E13C9 /* AboutViewController.m */; };
-		168FFD881E8FD778003DB6D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 168FFD861E8FD778003DB6D9 /* LaunchScreen.storyboard */; };
-		16A2E4752CA435B400C8050D /* data_202408.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 16A2E4742CA435B400C8050D /* data_202408.sqlite */; };
-		16FF6DA01816A02400CC30BC /* PostalCodeRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF6D9D1816A02400CC30BC /* PostalCodeRepository.m */; };
 		9FAD58C341B605265AF1E500 /* libPods-PostalCodeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0661EBCB26C240196A4592 /* libPods-PostalCodeTests.a */; };
 		D8E21160060A7C01C63EB02B /* libPods-PostalCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB992C75BC6AF5DF126C737 /* libPods-PostalCode.a */; };
 /* End PBXBuildFile section */
@@ -58,44 +39,11 @@
 		162380121815DCB9004C8D73 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		162380141815DCB9004C8D73 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		162380161815DCB9004C8D73 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		1623801A1815DCB9004C8D73 /* PostalCode-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PostalCode-Info.plist"; sourceTree = "<group>"; };
-		1623801E1815DCB9004C8D73 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		162380201815DCB9004C8D73 /* PostalCode-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PostalCode-Prefix.pch"; sourceTree = "<group>"; };
-		162380211815DCB9004C8D73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		162380221815DCB9004C8D73 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		162380251815DCB9004C8D73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1623802D1815DCB9004C8D73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		162380331815DCB9004C8D73 /* PostalCodeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostalCodeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		162380341815DCB9004C8D73 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		1623803C1815DCB9004C8D73 /* PostalCodeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PostalCodeTests-Info.plist"; sourceTree = "<group>"; };
-		162380401815DCB9004C8D73 /* PostalCodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostalCodeTests.m; sourceTree = "<group>"; };
 		162380711815DE2F004C8D73 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		162380741815DEBA004C8D73 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
-		162380751815DEBA004C8D73 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
-		162380761815DEBA004C8D73 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		162380771815DEBA004C8D73 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		162380781815DEBA004C8D73 /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
-		162380791815DEBA004C8D73 /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
-		1623807A1815DEBA004C8D73 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		1623807B1815DEBA004C8D73 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		1625AEDD18F0223500E9FD93 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
-		1625AEDE18F0223500E9FD93 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
-		163442AE1815F889006C12F6 /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
-		163442AF1815F889006C12F6 /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
 		164554D21815DF02008D1C14 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		164554D41815DF08008D1C14 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		164554D61815E0E5008D1C14 /* SelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectViewController.h; sourceTree = "<group>"; };
-		164554D71815E0E5008D1C14 /* SelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectViewController.m; sourceTree = "<group>"; };
-		16654CCB2A2A19F000F4CE43 /* RightDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightDetailTableViewCell.m; sourceTree = "<group>"; };
-		16654CCD2A2A1A0400F4CE43 /* RightDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightDetailTableViewCell.h; sourceTree = "<group>"; };
-		166A347B181B4B51001E13C9 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
-		166A347C181B4B51001E13C9 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
-		166A347F181BCD77001E13C9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		166A3480181BCD77001E13C9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		168FFD871E8FD778003DB6D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		16A2E4742CA435B400C8050D /* data_202408.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data_202408.sqlite; sourceTree = "<group>"; };
-		16FF6D9C1816A02400CC30BC /* PostalCodeRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostalCodeRepository.h; sourceTree = "<group>"; };
-		16FF6D9D1816A02400CC30BC /* PostalCodeRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostalCodeRepository.m; sourceTree = "<group>"; };
 		31B6BCE2FDA3333008AFC4BA /* Pods-PostalCodeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostalCodeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostalCodeTests/Pods-PostalCodeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6E34F2BE2E70F621125F9F92 /* Pods-PostalCodeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostalCodeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostalCodeTests/Pods-PostalCodeTests.release.xcconfig"; sourceTree = "<group>"; };
 		8EB992C75BC6AF5DF126C737 /* libPods-PostalCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PostalCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +51,28 @@
 		E6DF6FF7C86D621271EB5405 /* Pods-PostalCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostalCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostalCode/Pods-PostalCode.debug.xcconfig"; sourceTree = "<group>"; };
 		ED0661EBCB26C240196A4592 /* libPods-PostalCodeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PostalCodeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		163B17232DBE2833001D23D2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"PostalCode-Info.plist",
+			);
+			target = 1623800E1815DCB9004C8D73 /* PostalCode */;
+		};
+		163B17282DBE2865001D23D2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				PostalCodeTests.m,
+			);
+			target = 162380321815DCB9004C8D73 /* PostalCodeTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		163B17102DBE2833001D23D2 /* PostalCode */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (163B17232DBE2833001D23D2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PostalCode; sourceTree = "<group>"; };
+		163B17262DBE2865001D23D2 /* PostalCodeTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (163B17282DBE2865001D23D2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PostalCodeTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1623800C1815DCB9004C8D73 /* Frameworks */ = {
@@ -138,8 +108,8 @@
 		162380061815DCB9004C8D73 = {
 			isa = PBXGroup;
 			children = (
-				162380181815DCB9004C8D73 /* PostalCode */,
-				1623803A1815DCB9004C8D73 /* PostalCodeTests */,
+				163B17102DBE2833001D23D2 /* PostalCode */,
+				163B17262DBE2865001D23D2 /* PostalCodeTests */,
 				162380111815DCB9004C8D73 /* Frameworks */,
 				162380101815DCB9004C8D73 /* Products */,
 				3BC3B46CF27A176B2FEDFF33 /* Pods */,
@@ -173,101 +143,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		162380181815DCB9004C8D73 /* PostalCode */ = {
-			isa = PBXGroup;
-			children = (
-				16FF6D971816A02400CC30BC /* Library */,
-				16654CCE2A2A891500F4CE43 /* BaseViewController */,
-				162380731815DEBA004C8D73 /* ViewController */,
-				16654CCA2A2A198800F4CE43 /* Cell */,
-				162380211815DCB9004C8D73 /* AppDelegate.h */,
-				162380221815DCB9004C8D73 /* AppDelegate.m */,
-				162380241815DCB9004C8D73 /* Main.storyboard */,
-				168FFD861E8FD778003DB6D9 /* LaunchScreen.storyboard */,
-				1623802D1815DCB9004C8D73 /* Images.xcassets */,
-				162380191815DCB9004C8D73 /* Supporting Files */,
-			);
-			path = PostalCode;
-			sourceTree = "<group>";
-		};
-		162380191815DCB9004C8D73 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				16A2E4742CA435B400C8050D /* data_202408.sqlite */,
-				1623801A1815DCB9004C8D73 /* PostalCode-Info.plist */,
-				1623801B1815DCB9004C8D73 /* InfoPlist.strings */,
-				1623801E1815DCB9004C8D73 /* main.m */,
-				162380201815DCB9004C8D73 /* PostalCode-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1623803A1815DCB9004C8D73 /* PostalCodeTests */ = {
-			isa = PBXGroup;
-			children = (
-				162380401815DCB9004C8D73 /* PostalCodeTests.m */,
-				1623803B1815DCB9004C8D73 /* Supporting Files */,
-			);
-			path = PostalCodeTests;
-			sourceTree = "<group>";
-		};
-		1623803B1815DCB9004C8D73 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1623803C1815DCB9004C8D73 /* PostalCodeTests-Info.plist */,
-				1623803D1815DCB9004C8D73 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		162380731815DEBA004C8D73 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				164554D61815E0E5008D1C14 /* SelectViewController.h */,
-				164554D71815E0E5008D1C14 /* SelectViewController.m */,
-				1623807A1815DEBA004C8D73 /* SearchViewController.h */,
-				1623807B1815DEBA004C8D73 /* SearchViewController.m */,
-				162380781815DEBA004C8D73 /* FavoriteViewController.h */,
-				162380791815DEBA004C8D73 /* FavoriteViewController.m */,
-				162380761815DEBA004C8D73 /* DetailViewController.h */,
-				162380771815DEBA004C8D73 /* DetailViewController.m */,
-				166A347B181B4B51001E13C9 /* AboutViewController.h */,
-				166A347C181B4B51001E13C9 /* AboutViewController.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		16654CCA2A2A198800F4CE43 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				16654CCD2A2A1A0400F4CE43 /* RightDetailTableViewCell.h */,
-				16654CCB2A2A19F000F4CE43 /* RightDetailTableViewCell.m */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		16654CCE2A2A891500F4CE43 /* BaseViewController */ = {
-			isa = PBXGroup;
-			children = (
-				163442AE1815F889006C12F6 /* BaseTabBarController.h */,
-				163442AF1815F889006C12F6 /* BaseTabBarController.m */,
-				1625AEDD18F0223500E9FD93 /* BaseTableViewController.h */,
-				1625AEDE18F0223500E9FD93 /* BaseTableViewController.m */,
-				162380741815DEBA004C8D73 /* BaseNavigationController.h */,
-				162380751815DEBA004C8D73 /* BaseNavigationController.m */,
-			);
-			path = BaseViewController;
-			sourceTree = "<group>";
-		};
-		16FF6D971816A02400CC30BC /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				16FF6D9C1816A02400CC30BC /* PostalCodeRepository.h */,
-				16FF6D9D1816A02400CC30BC /* PostalCodeRepository.m */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		3BC3B46CF27A176B2FEDFF33 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +169,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				163B17102DBE2833001D23D2 /* PostalCode */,
 			);
 			name = PostalCode;
 			productName = PostalCode;
@@ -363,11 +241,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1623802E1815DCB9004C8D73 /* Images.xcassets in Resources */,
-				168FFD881E8FD778003DB6D9 /* LaunchScreen.storyboard in Resources */,
-				1623801D1815DCB9004C8D73 /* InfoPlist.strings in Resources */,
-				162380261815DCB9004C8D73 /* Main.storyboard in Resources */,
-				16A2E4752CA435B400C8050D /* data_202408.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +248,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1623803F1815DCB9004C8D73 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,18 +297,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1623807E1815DEBA004C8D73 /* BaseNavigationController.m in Sources */,
-				16654CCC2A2A19F000F4CE43 /* RightDetailTableViewCell.m in Sources */,
-				162380801815DEBA004C8D73 /* FavoriteViewController.m in Sources */,
-				162380231815DCB9004C8D73 /* AppDelegate.m in Sources */,
-				1625AEDF18F0223500E9FD93 /* BaseTableViewController.m in Sources */,
-				162380811815DEBA004C8D73 /* SearchViewController.m in Sources */,
-				1623801F1815DCB9004C8D73 /* main.m in Sources */,
-				164554D81815E0E5008D1C14 /* SelectViewController.m in Sources */,
-				163442B01815F889006C12F6 /* BaseTabBarController.m in Sources */,
-				16FF6DA01816A02400CC30BC /* PostalCodeRepository.m in Sources */,
-				166A347D181B4B51001E13C9 /* AboutViewController.m in Sources */,
-				1623807F1815DEBA004C8D73 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +304,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				162380411815DCB9004C8D73 /* PostalCodeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,41 +316,6 @@
 			targetProxy = 162380381815DCB9004C8D73 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1623801B1815DCB9004C8D73 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				166A347F181BCD77001E13C9 /* ja */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		162380241815DCB9004C8D73 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				162380251815DCB9004C8D73 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1623803D1815DCB9004C8D73 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				166A3480181BCD77001E13C9 /* ja */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		168FFD861E8FD778003DB6D9 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				168FFD871E8FD778003DB6D9 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		162380421815DCB9004C8D73 /* Debug */ = {
