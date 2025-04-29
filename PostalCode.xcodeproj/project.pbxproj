@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1608BF382DC04D600085D605 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 1608BF372DC04D600085D605 /* GoogleMobileAds */; };
 		1614B3372514CB5500E8B42E /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1614B3362514CB5500E8B42E /* AppTrackingTransparency.framework */; };
 		162229701DCDCCC4002150CC /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1622296F1DCDCCC4002150CC /* ImageIO.framework */; };
 		162380131815DCB9004C8D73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380121815DCB9004C8D73 /* Foundation.framework */; };
@@ -18,8 +19,6 @@
 		162380721815DE2F004C8D73 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 162380711815DE2F004C8D73 /* libsqlite3.0.dylib */; };
 		164554D31815DF02008D1C14 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D21815DF02008D1C14 /* Security.framework */; };
 		164554D51815DF08008D1C14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164554D41815DF08008D1C14 /* AdSupport.framework */; };
-		9FAD58C341B605265AF1E500 /* libPods-PostalCodeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0661EBCB26C240196A4592 /* libPods-PostalCodeTests.a */; };
-		D8E21160060A7C01C63EB02B /* libPods-PostalCode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EB992C75BC6AF5DF126C737 /* libPods-PostalCode.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,12 +43,6 @@
 		162380711815DE2F004C8D73 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		164554D21815DF02008D1C14 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		164554D41815DF08008D1C14 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		31B6BCE2FDA3333008AFC4BA /* Pods-PostalCodeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostalCodeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostalCodeTests/Pods-PostalCodeTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6E34F2BE2E70F621125F9F92 /* Pods-PostalCodeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostalCodeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostalCodeTests/Pods-PostalCodeTests.release.xcconfig"; sourceTree = "<group>"; };
-		8EB992C75BC6AF5DF126C737 /* libPods-PostalCode.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PostalCode.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E15C941F8BF9535B84953876 /* Pods-PostalCode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostalCode.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostalCode/Pods-PostalCode.release.xcconfig"; sourceTree = "<group>"; };
-		E6DF6FF7C86D621271EB5405 /* Pods-PostalCode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostalCode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostalCode/Pods-PostalCode.debug.xcconfig"; sourceTree = "<group>"; };
-		ED0661EBCB26C240196A4592 /* libPods-PostalCodeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PostalCodeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -82,12 +75,12 @@
 				162229701DCDCCC4002150CC /* ImageIO.framework in Frameworks */,
 				164554D51815DF08008D1C14 /* AdSupport.framework in Frameworks */,
 				164554D31815DF02008D1C14 /* Security.framework in Frameworks */,
+				1608BF382DC04D600085D605 /* GoogleMobileAds in Frameworks */,
 				1614B3372514CB5500E8B42E /* AppTrackingTransparency.framework in Frameworks */,
 				162380721815DE2F004C8D73 /* libsqlite3.0.dylib in Frameworks */,
 				162380151815DCB9004C8D73 /* CoreGraphics.framework in Frameworks */,
 				162380171815DCB9004C8D73 /* UIKit.framework in Frameworks */,
 				162380131815DCB9004C8D73 /* Foundation.framework in Frameworks */,
-				D8E21160060A7C01C63EB02B /* libPods-PostalCode.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +91,6 @@
 				162380351815DCB9004C8D73 /* XCTest.framework in Frameworks */,
 				162380371815DCB9004C8D73 /* UIKit.framework in Frameworks */,
 				162380361815DCB9004C8D73 /* Foundation.framework in Frameworks */,
-				9FAD58C341B605265AF1E500 /* libPods-PostalCodeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +104,6 @@
 				163B17262DBE2865001D23D2 /* PostalCodeTests */,
 				162380111815DCB9004C8D73 /* Frameworks */,
 				162380101815DCB9004C8D73 /* Products */,
-				3BC3B46CF27A176B2FEDFF33 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,21 +128,8 @@
 				162380141815DCB9004C8D73 /* CoreGraphics.framework */,
 				162380161815DCB9004C8D73 /* UIKit.framework */,
 				162380341815DCB9004C8D73 /* XCTest.framework */,
-				8EB992C75BC6AF5DF126C737 /* libPods-PostalCode.a */,
-				ED0661EBCB26C240196A4592 /* libPods-PostalCodeTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3BC3B46CF27A176B2FEDFF33 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E6DF6FF7C86D621271EB5405 /* Pods-PostalCode.debug.xcconfig */,
-				E15C941F8BF9535B84953876 /* Pods-PostalCode.release.xcconfig */,
-				31B6BCE2FDA3333008AFC4BA /* Pods-PostalCodeTests.debug.xcconfig */,
-				6E34F2BE2E70F621125F9F92 /* Pods-PostalCodeTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +139,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 162380441815DCB9004C8D73 /* Build configuration list for PBXNativeTarget "PostalCode" */;
 			buildPhases = (
-				91B566929C9ED788DA0CEE42 /* [CP] Check Pods Manifest.lock */,
 				1623800B1815DCB9004C8D73 /* Sources */,
 				1623800C1815DCB9004C8D73 /* Frameworks */,
 				1623800D1815DCB9004C8D73 /* Resources */,
@@ -182,7 +159,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 162380471815DCB9004C8D73 /* Build configuration list for PBXNativeTarget "PostalCodeTests" */;
 			buildPhases = (
-				0DF5E2FCDFAE9C3C42CC1FF3 /* [CP] Check Pods Manifest.lock */,
 				1623802F1815DCB9004C8D73 /* Sources */,
 				162380301815DCB9004C8D73 /* Frameworks */,
 				162380311815DCB9004C8D73 /* Resources */,
@@ -208,7 +184,6 @@
 				ORGANIZATIONNAME = "OCHIISHI Koichiro";
 				TargetAttributes = {
 					1623800E1815DCB9004C8D73 = {
-						DevelopmentTeam = CLLJ787FV4;
 						ProvisioningStyle = Automatic;
 					};
 					162380321815DCB9004C8D73 = {
@@ -226,6 +201,9 @@
 				ja,
 			);
 			mainGroup = 162380061815DCB9004C8D73;
+			packageReferences = (
+				1608BF362DC04D600085D605 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = 162380101815DCB9004C8D73 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -252,45 +230,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0DF5E2FCDFAE9C3C42CC1FF3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PostalCodeTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		91B566929C9ED788DA0CEE42 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PostalCode-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1623800B1815DCB9004C8D73 /* Sources */ = {
@@ -425,7 +364,6 @@
 		};
 		162380451815DCB9004C8D73 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6DF6FF7C86D621271EB5405 /* Pods-PostalCode.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -450,7 +388,6 @@
 		};
 		162380461815DCB9004C8D73 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E15C941F8BF9535B84953876 /* Pods-PostalCode.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
@@ -475,7 +412,6 @@
 		};
 		162380481815DCB9004C8D73 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31B6BCE2FDA3333008AFC4BA /* Pods-PostalCodeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PostalCode.app/PostalCode";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -499,7 +435,6 @@
 		};
 		162380491815DCB9004C8D73 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E34F2BE2E70F621125F9F92 /* Pods-PostalCodeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PostalCode.app/PostalCode";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -548,6 +483,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1608BF362DC04D600085D605 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1608BF372DC04D600085D605 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1608BF362DC04D600085D605 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 162380071815DCB9004C8D73 /* Project object */;
 }
