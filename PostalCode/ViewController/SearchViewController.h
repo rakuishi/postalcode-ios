@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PostalCodeRepository.h"
-#import "DetailViewController.h"
+#import "PostalCode-Swift.h"
 #import "BaseTableViewController.h"
 
 @interface SearchViewController : BaseTableViewController <UISearchBarDelegate>

@@ -256,7 +256,7 @@
         <!--Detail View Controller-->
         <scene sceneID="Zsk-ib-0Zy">
             <objects>
-                <tableViewController storyboardIdentifier="DetailViewController" id="493-id-CqY" customClass="DetailViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DetailViewController" id="493-id-CqY" customClass="DetailViewController" customModule="PostalCode" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="g2e-9J-uDZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
