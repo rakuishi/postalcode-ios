@@ -1,0 +1,13 @@
+//
+//  DesignToken.swift
+//  PostalCode
+//
+//  Created by Koichiro OCHIISHI on 2025/05/05.
+//  Copyright © 2025 OCHIISHI Koichiro. All rights reserved.
+//
+
+import UIKit
+
+struct Color {
+    static let primary = UIColor(red: 234.0/255.0, green: 67.0/255.0, blue: 53.0/255.0, alpha: 1.0)
+}
