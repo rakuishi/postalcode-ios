@@ -155,7 +155,7 @@
         <!--お気に入り-->
         <scene sceneID="CGK-Qx-KdD">
             <objects>
-                <tableViewController id="rKt-5S-MqS" customClass="FavoriteViewController" sceneMemberID="viewController">
+                <tableViewController id="rKt-5S-MqS" customClass="FavoriteViewController" customModule="PostalCode" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="co9-RV-cff">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
