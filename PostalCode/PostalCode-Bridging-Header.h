@@ -3,4 +3,4 @@
 //
 
 #import "PostalCodeRepository.h"
-#import "BaseTableViewController.h"
+#import "BaseNavigationController.h"

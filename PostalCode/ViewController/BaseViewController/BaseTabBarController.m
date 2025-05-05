@@ -7,6 +7,7 @@
 //
 
 #import "BaseTabBarController.h"
+#import "BaseNavigationController.h"
 #import "PostalCode-Swift.h"
 
 @implementation BaseTabBarController
