@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "PostalCode-Swift.h"
 
 typedef NS_ENUM(NSUInteger, kSection) {
     kSectionInfo,

@@ -10,7 +10,6 @@
 #import <MessageUI/MessageUI.h>
 #import "PostalCodeRepository.h"
 #import "BaseTableViewController.h"
-#import "RightDetailTableViewCell.h"
 
 @interface DetailViewController : BaseTableViewController <MFMailComposeViewControllerDelegate>
 
