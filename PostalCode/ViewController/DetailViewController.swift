@@ -9,7 +9,6 @@
 import UIKit
 import MessageUI
 
-@objcMembers
 class DetailViewController: BaseTableViewController, @preconcurrency MFMailComposeViewControllerDelegate {
 
     var postalCodeModel: PostalCodeModel!

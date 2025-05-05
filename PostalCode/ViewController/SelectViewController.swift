@@ -8,7 +8,6 @@
 
 import UIKit
 
-@objcMembers
 class SelectViewController: BaseTableViewController {
 
     enum SelectedAddress: Int {

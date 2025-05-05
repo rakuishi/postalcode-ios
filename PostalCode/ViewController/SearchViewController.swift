@@ -8,7 +8,6 @@
 
 import UIKit
 
-@objcMembers
 class SearchViewController: BaseTableViewController, UISearchBarDelegate {
 
     private var searchBar: UISearchBar!

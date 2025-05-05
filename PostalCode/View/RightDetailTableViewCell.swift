@@ -8,7 +8,6 @@
 
 import UIKit
 
-@objcMembers
 class RightDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var primaryLabel: UILabel!

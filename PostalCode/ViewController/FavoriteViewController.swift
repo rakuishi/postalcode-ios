@@ -8,7 +8,6 @@
 
 import UIKit
 
-@objcMembers
 class FavoriteViewController: BaseTableViewController {
 
     private var objects: [Data] = []

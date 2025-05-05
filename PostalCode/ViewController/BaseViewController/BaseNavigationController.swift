@@ -10,7 +10,6 @@ import UIKit
 import GoogleMobileAds
 import AppTrackingTransparency
 
-@objcMembers
 class BaseNavigationController: UINavigationController {
 
     private var bannerView: BannerView!

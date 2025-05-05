@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import MessageUI
 
-@objcMembers
 class AboutViewController: UITableViewController, @preconcurrency MFMailComposeViewControllerDelegate {
 
     private enum Section: Int, CaseIterable {

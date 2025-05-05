@@ -10,7 +10,6 @@ import Foundation
 
 import UIKit
 
-@objcMembers
 class BaseTableViewController: UITableViewController {
 
     override func viewDidLoad() {
