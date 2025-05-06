@@ -77,12 +77,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
     }
     
     private func performSearch(with query: String) async -> [[PostalCodeModel]] {
-        return await withCheckedContinuation { continuation in
-            DispatchQueue.global(qos: .default).async {
-                let results = PostalCodeRepository.shared().search(withQuery: query)
-                continuation.resume(returning: results as! [[PostalCodeModel]])
-            }
-        }
+        return await PostalCodeRepository.shared.searchWithQuery(query)
     }
 
     private func stringToThreeCharacters(_ string: String) -> String {

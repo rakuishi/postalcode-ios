@@ -101,38 +101,26 @@ class SelectViewController: BaseTableViewController {
     }
 
     private func fetchStateData() async throws -> ([[String]], [String]) {
-        return try await withUnsafeThrowingContinuation { continuation in
-            DispatchQueue.global(qos: .default).async {
-                let states = PostalCodeRepository.shared().getStates() as! [[String]]
-                let indexTitles = PostalCodeRepository.shared().getStateSectionIndexTitles() as! [String]
-                continuation.resume(returning: (states, indexTitles))
-            }
-        }
+        let states = await PostalCodeRepository.shared.getStates()
+        let indexTitles = await PostalCodeRepository.shared.getStateSectionIndexTitles()
+        return (states, indexTitles)
     }
     
     private func fetchCityTownData(selectedState: String) async throws -> ([PostalCodeModel], [String]) {
-        return try await withUnsafeThrowingContinuation { continuation in
-            DispatchQueue.global(qos: .default).async {
-                let cityTowns = PostalCodeRepository.shared().getCityTowns(byState: selectedState) as! [PostalCodeModel]
-                let indexTitles = cityTowns.map { model in
-                    String(model.cityTownK.prefix(3))
-                }
-                continuation.resume(returning: (cityTowns, indexTitles))
-            }
+        let cityTowns = await PostalCodeRepository.shared.getCityTownsByState(selectedState)
+        let indexTitles = cityTowns.map { model in
+            String(model.cityTownK.prefix(3))
         }
+        return (cityTowns, indexTitles)
     }
 
     private func fetchStreetData(selectedState: String, selectedCityTown: String) async throws -> ([[PostalCodeModel]], [String]) {
-        return try await withUnsafeThrowingContinuation { continuation in
-            DispatchQueue.global(qos: .default).async {
-                let streets = PostalCodeRepository.shared().getStreetsByState(selectedState, byCityAndTown: selectedCityTown) as! [[PostalCodeModel]]
-                let indexTitles = streets.map { models in
-                    guard let model = models.last else { return "" }
-                    return model.streetH.isEmpty ? "" : String(model.streetH.prefix(1))
-                }
-                continuation.resume(returning: (streets, indexTitles))
-            }
+        let streets = await PostalCodeRepository.shared.getStreetsByState(selectedState, byCityAndTown: selectedCityTown)
+        let indexTitles = streets.map { models in
+            guard let model = models.last else { return "" }
+            return model.streetH.isEmpty ? "" : String(model.streetH.prefix(1))
         }
+        return (streets, indexTitles)
     }
 
     // MARK: - Table View Data Source

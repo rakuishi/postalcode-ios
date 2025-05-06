@@ -9,7 +9,7 @@
 import Foundation
 
 @objcMembers
-class PostalCodeModel: NSObject, NSSecureCoding {
+class PostalCodeModel: NSObject, NSSecureCoding, @unchecked Sendable {
     var postalCode: String = "" // 郵便番号
     var stateH: String = ""     // 都道府県（平仮名）
     var cityTownH: String = ""  // 市町村（平仮名）
