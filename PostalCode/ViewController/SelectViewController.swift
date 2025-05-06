@@ -115,7 +115,7 @@ class SelectViewController: BaseTableViewController {
             DispatchQueue.global(qos: .default).async {
                 let cityTowns = PostalCodeRepository.shared().getCityTowns(byState: selectedState) as! [PostalCodeModel]
                 let indexTitles = cityTowns.map { model in
-                    String((model.cityTownK ?? "").prefix(3))
+                    String(model.cityTownK.prefix(3))
                 }
                 continuation.resume(returning: (cityTowns, indexTitles))
             }

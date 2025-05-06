@@ -91,12 +91,12 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
 
     private func textLabelText(for indexPath: IndexPath) -> String {
         let model = objects[indexPath.section][indexPath.row]
-        return "\(model.stateK ?? "") \(model.cityTownK ?? "") \(model.streetK ?? "")"
+        return "\(model.stateK) \(model.cityTownK) \(model.streetK)"
     }
 
     private func detailTextLabelText(for indexPath: IndexPath) -> String {
         let model = objects[indexPath.section][indexPath.row]
-        let postalCode = model.postalCode ?? ""
+        let postalCode = model.postalCode
         let formattedPostalCode = "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
         return formattedPostalCode
     }

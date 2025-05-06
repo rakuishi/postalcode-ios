@@ -7,44 +7,11 @@
 //
 
 #import "PostalCodeRepository.h"
+#import "PostalCode-Swift.h"
 
 #define FAVORITE         @"favorite"
 #define DATABASE_NAME    @"data_202408.sqlite"
 // AboutViewController の「郵便番号データ」の日付を変えるのを忘れないように
-
-@implementation PostalCodeModel
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super init];
-    if (self) {
-        self.postalCode = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"postalCode"];
-        self.stateH = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"stateH"];
-        self.cityTownH = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"cityTownH"];
-        self.streetH = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"streetH"];
-        self.stateK = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"stateK"];
-        self.cityTownK = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"cityTownK"];
-        self.streetK = [aDecoder decodeObjectOfClass:[NSString class] forKey:@"streetK"];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    [aCoder encodeObject:self.postalCode forKey:@"postalCode"];
-    [aCoder encodeObject:self.stateH forKey:@"stateH"];
-    [aCoder encodeObject:self.cityTownH forKey:@"cityTownH"];
-    [aCoder encodeObject:self.streetH forKey:@"streetH"];
-    [aCoder encodeObject:self.stateK forKey:@"stateK"];
-    [aCoder encodeObject:self.cityTownK forKey:@"cityTownK"];
-    [aCoder encodeObject:self.streetK forKey:@"streetK"];
-}
-
-+ (BOOL)supportsSecureCoding {
-   return YES;
-}
-
-@end
 
 @implementation PostalCodeRepository {
     NSString *databasePath;

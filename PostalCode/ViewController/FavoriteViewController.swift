@@ -59,11 +59,11 @@ class FavoriteViewController: BaseTableViewController {
     }
 
     private func textLabelText(for model: PostalCodeModel) -> String {
-        return "\(model.stateK ?? "") \(model.cityTownK ?? "") \(model.streetK ?? "")"
+        return "\(model.stateK) \(model.cityTownK) \(model.streetK)"
     }
 
     private func detailTextLabelText(for model: PostalCodeModel) -> String {
-        let postalCode = model.postalCode ?? ""
+        let postalCode = model.postalCode
         let formattedPostalCode = "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
         return formattedPostalCode
     }
