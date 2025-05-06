@@ -32,13 +32,3 @@
 - (NSMutableArray *)getStreetsByState:(NSString *)state byCityAndTown:(NSString *)cityTown;
 
 @end
-
-@interface FavoriteRepository : NSObject
-
-+ (NSMutableArray *)getFavorites;
-+ (void)addFavoritePostalCodeModel:(PostalCodeModel *)model;
-+ (void)deleteFavoritePostalCodeModel:(NSInteger)index;
-+ (void)deleteAllFavorite;
-+ (BOOL)isExistPostalCodeModel:(PostalCodeModel *)model;
-
-@end

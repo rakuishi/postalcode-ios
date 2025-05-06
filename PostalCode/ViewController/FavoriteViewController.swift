@@ -10,7 +10,7 @@ import UIKit
 
 class FavoriteViewController: BaseTableViewController {
 
-    private var objects: [Data] = []
+    private var postalCodes: [PostalCodeModel] = []
     private var deleteButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -34,13 +34,13 @@ class FavoriteViewController: BaseTableViewController {
             reloadAllData()
         }
 
-        deleteButtonItem.isEnabled = !objects.isEmpty
+        deleteButtonItem.isEnabled = !postalCodes.isEmpty
     }
 
     // MARK: - Data Handling
 
     private func reloadAllData() {
-        objects = FavoriteRepository.getFavorites() as! [Data]
+        postalCodes = FavoriteRepository.getFavorites()
         tableView.reloadData()
     }
 
@@ -68,16 +68,6 @@ class FavoriteViewController: BaseTableViewController {
         return formattedPostalCode
     }
 
-    private func getPostalCodeModel(at indexPath: IndexPath) -> PostalCodeModel? {
-        let data = objects[indexPath.row]
-        do {
-            return try NSKeyedUnarchiver.unarchivedObject(ofClass: PostalCodeModel.self, from: data)
-        } catch {
-            print("Error unarchiving PostalCodeModel: \(error)")
-            return nil
-        }
-    }
-
     // MARK: - Table View Data Source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,12 +75,12 @@ class FavoriteViewController: BaseTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return postalCodes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        guard let postalCode = getPostalCodeModel(at: indexPath) else { return cell }
+        let postalCode = self.postalCodes[indexPath.row]
 
         cell.textLabel?.text = textLabelText(for: postalCode)
         cell.detailTextLabel?.text = detailTextLabelText(for: postalCode)
@@ -108,8 +98,8 @@ class FavoriteViewController: BaseTableViewController {
         if editingStyle == .delete {
             tableView.beginUpdates()
 
-            FavoriteRepository.deleteFavoritePostalCodeModel(indexPath.row)
-            objects.remove(at: indexPath.row)
+            FavoriteRepository.deleteFavoritePostalCodeModel(at: indexPath.row)
+            postalCodes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
 
             tableView.endUpdates()
@@ -117,10 +107,10 @@ class FavoriteViewController: BaseTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let model = getPostalCodeModel(at: indexPath) else { return }
+        let postalCode = self.postalCodes[indexPath.row]
 
         let viewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        viewController.postalCodeModel = model
+        viewController.postalCodeModel = postalCode
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
