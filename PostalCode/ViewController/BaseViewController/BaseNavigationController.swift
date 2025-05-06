@@ -102,7 +102,9 @@ class BaseNavigationController: UINavigationController {
 
     private func requestTrackingAuthorizationIfPossible() {
         if ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
-            ATTrackingManager.requestTrackingAuthorization { _ in }
+            Task {
+                await ATTrackingManager.requestTrackingAuthorization()
+            }
         }
     }
 
