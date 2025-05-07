@@ -29,7 +29,6 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         searchBar.tintColor = Color.primary
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.font = UIFont.systemFont(ofSize: 16)
-            textField.backgroundColor = Color.searchFieldBackground
         }
 
         navigationItem.titleView = searchBar
