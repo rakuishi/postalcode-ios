@@ -82,26 +82,26 @@ class SelectViewController: BaseTableViewController {
         case .state:
             return (objects[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
         case .cityTown:
-            let model = objects[indexPath.section] as? PostalCodeModel
-            return model?.cityTownK ?? ""
+            let postalCode = objects[indexPath.section] as? PostalCode
+            return postalCode?.cityTownK ?? ""
         case .street:
-            let model =
-                (objects[indexPath.section] as? [PostalCodeModel])?[indexPath.row]
-                as? PostalCodeModel
-            return model?.streetK.isEmpty ?? true ? model?.cityTownK ?? "" : model?.streetK ?? ""
+            let postalCode =
+                (objects[indexPath.section] as? [PostalCode])?[indexPath.row]
+                as? PostalCode
+            return postalCode?.streetK.isEmpty ?? true ? postalCode?.cityTownK ?? "" : postalCode?.streetK ?? ""
         }
     }
 
     private func detailTextLabelText(for indexPath: IndexPath) -> String {
         switch selectedAddress {
         case .cityTown:
-            let model = objects[indexPath.section] as? PostalCodeModel
-            return model?.cityTownH ?? ""
+            let postalCode = objects[indexPath.section] as? PostalCode
+            return postalCode?.cityTownH ?? ""
         case .street:
-            let model =
-                (objects[indexPath.section] as? [PostalCodeModel])?[indexPath.row]
-                as? PostalCodeModel
-            return model?.streetK.isEmpty ?? true ? model?.cityTownH ?? "" : model?.streetH ?? ""
+            let postalCode =
+                (objects[indexPath.section] as? [PostalCode])?[indexPath.row]
+                as? PostalCode
+            return postalCode?.streetK.isEmpty ?? true ? postalCode?.cityTownH ?? "" : postalCode?.streetH ?? ""
         default:
             return ""
         }
@@ -114,23 +114,23 @@ class SelectViewController: BaseTableViewController {
     }
 
     private func fetchCityTownData(selectedState: String) async throws -> (
-        [PostalCodeModel], [String]
+        [PostalCode], [String]
     ) {
         let cityTowns = await PostalCodeRepository.shared.getCityTownsByState(selectedState)
-        let indexTitles = cityTowns.map { model in
-            String(model.cityTownK.prefix(3))
+        let indexTitles = cityTowns.map { postalCode in
+            String(postalCode.cityTownK.prefix(3))
         }
         return (cityTowns, indexTitles)
     }
 
     private func fetchStreetData(selectedState: String, selectedCityTown: String) async throws -> (
-        [[PostalCodeModel]], [String]
+        [[PostalCode]], [String]
     ) {
         let streets = await PostalCodeRepository.shared.getStreetsByState(
             selectedState, byCityAndTown: selectedCityTown)
-        let indexTitles = streets.map { models in
-            guard let model = models.last else { return "" }
-            return model.streetH.isEmpty ? "" : String(model.streetH.prefix(1))
+        let indexTitles = streets.map { postalCodes in
+            guard let postalCode = postalCodes.last else { return "" }
+            return postalCode.streetH.isEmpty ? "" : String(postalCode.streetH.prefix(1))
         }
         return (streets, indexTitles)
     }
@@ -185,23 +185,23 @@ class SelectViewController: BaseTableViewController {
                 (objects[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
             navigationController?.pushViewController(viewController, animated: true)
         case .cityTown:
-            let model = objects[indexPath.section] as? PostalCodeModel
+            let postalCode = objects[indexPath.section] as? PostalCode
             let viewController =
                 storyboard?.instantiateViewController(withIdentifier: "SelectViewController")
                 as! SelectViewController
             viewController.selectedAddress = .street
             viewController.selectedState = selectedState
-            viewController.selectedCityTown = model?.cityTownK
-            viewController.title = model?.cityTownK
+            viewController.selectedCityTown = postalCode?.cityTownK
+            viewController.title = postalCode?.cityTownK
             navigationController?.pushViewController(viewController, animated: true)
         case .street:
-            let model =
-                (objects[indexPath.section] as? [PostalCodeModel])?[indexPath.row]
-                as? PostalCodeModel
+            let postalCode =
+                (objects[indexPath.section] as? [PostalCode])?[indexPath.row]
+                as? PostalCode
             let viewController =
                 storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
                 as! DetailViewController
-            viewController.postalCodeModel = model
+            viewController.postalCode = postalCode
             navigationController?.pushViewController(viewController, animated: true)
         }
     }

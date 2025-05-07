@@ -10,7 +10,7 @@ import UIKit
 
 class FavoriteViewController: BaseTableViewController {
 
-    private var postalCodes: [PostalCodeModel] = []
+    private var postalCodes: [PostalCode] = []
     private var deleteButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -61,13 +61,13 @@ class FavoriteViewController: BaseTableViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    private func textLabelText(for model: PostalCodeModel) -> String {
-        return "\(model.stateK) \(model.cityTownK) \(model.streetK)"
+    private func textLabelText(for postalCode: PostalCode) -> String {
+        return "\(postalCode.stateK) \(postalCode.cityTownK) \(postalCode.streetK)"
     }
 
     private func detailTextLabelText(for indexPath: IndexPath) -> String {
-        let model = postalCodes[indexPath.row]
-        return model.formattedPostalCode
+        let postalCode = postalCodes[indexPath.row]
+        return postalCode.formattedCode
     }
 
     // MARK: - Table View Data Source
@@ -105,7 +105,7 @@ class FavoriteViewController: BaseTableViewController {
         if editingStyle == .delete {
             tableView.beginUpdates()
 
-            FavoriteRepository.deleteFavoritePostalCodeModel(at: indexPath.row)
+            FavoriteRepository.deleteFavorite(at: indexPath.row)
             postalCodes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
 
@@ -119,7 +119,7 @@ class FavoriteViewController: BaseTableViewController {
         let viewController =
             storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
             as! DetailViewController
-        viewController.postalCodeModel = postalCode
+        viewController.postalCode = postalCode
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

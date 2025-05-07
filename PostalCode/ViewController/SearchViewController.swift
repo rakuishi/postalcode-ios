@@ -11,7 +11,7 @@ import UIKit
 class SearchViewController: BaseTableViewController, UISearchBarDelegate {
 
     private var searchBar: UISearchBar!
-    private var objects: [[PostalCodeModel]] = []
+    private var objects: [[PostalCode]] = []
     private var sectionIndexTitles: [String] = []
 
     override func viewDidLoad() {
@@ -64,9 +64,9 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
             let results = await performSearch(with: sanitizedQuery)
 
             // テーブルビュー右側のセクションインデックスを作成する
-            let indexTitles = results.map { models in
-                let model = models.first
-                return self.stringToThreeCharacters(model?.stateK ?? "")
+            let indexTitles = results.map { postalCodes in
+                let postalCode = postalCodes.first
+                return self.stringToThreeCharacters(postalCode?.stateK ?? "")
             }
 
             self.objects = results
@@ -76,7 +76,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         }
     }
 
-    private func performSearch(with query: String) async -> [[PostalCodeModel]] {
+    private func performSearch(with query: String) async -> [[PostalCode]] {
         return await PostalCodeRepository.shared.searchWithQuery(query)
     }
 
@@ -85,13 +85,13 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
     }
 
     private func textLabelText(for indexPath: IndexPath) -> String {
-        let model = objects[indexPath.section][indexPath.row]
-        return "\(model.stateK) \(model.cityTownK) \(model.streetK)"
+        let postalCode = objects[indexPath.section][indexPath.row]
+        return "\(postalCode.stateK) \(postalCode.cityTownK) \(postalCode.streetK)"
     }
 
     private func detailTextLabelText(for indexPath: IndexPath) -> String {
-        let model = objects[indexPath.section][indexPath.row]
-        return model.formattedPostalCode
+        let postalCode = objects[indexPath.section][indexPath.row]
+        return postalCode.formattedCode
     }
 
     // MARK: - Table View Data Source
@@ -126,12 +126,12 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
     // MARK: - Table View Delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = objects[indexPath.section][indexPath.row]
+        let postalCode = objects[indexPath.section][indexPath.row]
 
         let viewController =
             storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
             as! DetailViewController
-        viewController.postalCodeModel = model
+        viewController.postalCode = postalCode
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

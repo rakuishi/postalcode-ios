@@ -14,7 +14,7 @@ class DetailViewController:
     @preconcurrency MFMailComposeViewControllerDelegate
 {
 
-    var postalCodeModel: PostalCodeModel!
+    var postalCode: PostalCode!
 
     private enum Section: Int, CaseIterable {
         case info
@@ -27,10 +27,10 @@ class DetailViewController:
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
 
-        if !postalCodeModel.streetK.isEmpty {
-            title = postalCodeModel.streetK
+        if !postalCode.streetK.isEmpty {
+            title = postalCode.streetK
         } else {
-            title = postalCodeModel.cityTownK
+            title = postalCode.cityTownK
         }
     }
 
@@ -122,14 +122,13 @@ class DetailViewController:
     private func getSecondaryLabelText(for indexPath: IndexPath) -> String {
         switch indexPath.row {
         case 0:
-            let postalCode = postalCodeModel.formattedPostalCode
-            return postalCode
+            return postalCode.formattedCode
         case 1:
             return
-                "\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)"
+                "\(postalCode.stateK) \(postalCode.cityTownK) \(postalCode.streetK)"
         case 2:
             return
-                "\(postalCodeModel.stateH) \(postalCodeModel.cityTownH) \(postalCodeModel.streetH)"
+                "\(postalCode.stateH) \(postalCode.cityTownH) \(postalCode.streetH)"
         default:
             return ""
         }
@@ -139,7 +138,7 @@ class DetailViewController:
 
     private func jumpMap() {
         let query =
-            "\(postalCodeModel.stateK)\(postalCodeModel.cityTownK)\(postalCodeModel.streetK)"
+            "\(postalCode.stateK)\(postalCode.cityTownK)\(postalCode.streetK)"
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let urlString: String
         if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
@@ -158,25 +157,22 @@ class DetailViewController:
         let viewController = MFMailComposeViewController()
         viewController.mailComposeDelegate = self
 
-        let postalCode = postalCodeModel.formattedPostalCode
-        let address = "\(postalCodeModel.stateK)\(postalCodeModel.cityTownK)\(postalCodeModel.streetK)"
-
         let body = """
-            郵便番号：\(postalCode)
-            住所：\(address)
+            郵便番号：\(postalCode.formattedCode)
+            住所：\(postalCode.stateK)\(postalCode.cityTownK)\(postalCode.streetK)
             """
         viewController.setMessageBody(body, isHTML: false)
         present(viewController, animated: true, completion: nil)
     }
 
     private func addFavorite() {
-        let isAlreadyExist = FavoriteRepository.isExist(postalCodeModel)
+        let isAlreadyExist = FavoriteRepository.isExist(postalCode)
         if !isAlreadyExist {
-            FavoriteRepository.addFavoritePostalCodeModel(postalCodeModel)
+            FavoriteRepository.addFavorite(postalCode)
         }
 
         let address =
-            "\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)"
+            "\(postalCode.stateK) \(postalCode.cityTownK) \(postalCode.streetK)"
         let message =
             isAlreadyExist
             ? "\"\(address)\"は お気に入りに登録されています"

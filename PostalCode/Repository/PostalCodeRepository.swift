@@ -55,7 +55,7 @@ actor PostalCodeRepository {
 
     // MARK: - Instance Methods
 
-    func searchWithQuery(_ query: String) -> [[PostalCodeModel]] {
+    func searchWithQuery(_ query: String) -> [[PostalCode]] {
         var sanitizedQuery = query
         sanitizedQuery = sanitizedQuery.replacingOccurrences(of: "都", with: "都 ")
         sanitizedQuery = sanitizedQuery.replacingOccurrences(of: "道", with: "道 ")
@@ -91,27 +91,27 @@ actor PostalCodeRepository {
             sqlite3_bind_text(statement, Int32(index), (likeQuery as NSString).utf8String, -1, nil)
         }
 
-        var results: [PostalCodeModel] = []
+        var results: [PostalCode] = []
         while sqlite3_step(statement) == SQLITE_ROW {
-            let model = PostalCodeModel()
-            model.postalCode = String(cString: sqlite3_column_text(statement, 0))
-            model.stateH = String(cString: sqlite3_column_text(statement, 1))
-            model.cityTownH = String(cString: sqlite3_column_text(statement, 2))
-            model.streetH = String(cString: sqlite3_column_text(statement, 3))
-            model.stateK = String(cString: sqlite3_column_text(statement, 4))
-            model.cityTownK = String(cString: sqlite3_column_text(statement, 5))
-            model.streetK = String(cString: sqlite3_column_text(statement, 6))
-            results.append(model)
+            let postalCode = PostalCode()
+            postalCode.code = String(cString: sqlite3_column_text(statement, 0))
+            postalCode.stateH = String(cString: sqlite3_column_text(statement, 1))
+            postalCode.cityTownH = String(cString: sqlite3_column_text(statement, 2))
+            postalCode.streetH = String(cString: sqlite3_column_text(statement, 3))
+            postalCode.stateK = String(cString: sqlite3_column_text(statement, 4))
+            postalCode.cityTownK = String(cString: sqlite3_column_text(statement, 5))
+            postalCode.streetK = String(cString: sqlite3_column_text(statement, 6))
+            results.append(postalCode)
         }
 
         // 絞り込み検索
         var filteredResults = results
         for query in queryComponents.dropFirst() {
-            filteredResults = filteredResults.filter { model in
-                model.postalCode.contains(query) || model.stateH.contains(query)
-                    || model.cityTownH.contains(query) || model.streetH.contains(query)
-                    || model.stateK.contains(query) || model.cityTownK.contains(query)
-                    || model.streetK.contains(query)
+            filteredResults = filteredResults.filter { postalCode in
+                postalCode.code.contains(query) || postalCode.stateH.contains(query)
+                    || postalCode.cityTownH.contains(query) || postalCode.streetH.contains(query)
+                    || postalCode.stateK.contains(query) || postalCode.cityTownK.contains(query)
+                    || postalCode.streetK.contains(query)
             }
         }
 
@@ -135,7 +135,7 @@ actor PostalCodeRepository {
         ]
     }
 
-    func getCityTownsByState(_ state: String) -> [PostalCodeModel] {
+    func getCityTownsByState(_ state: String) -> [PostalCode] {
         guard openDatabase() != nil else { return [] }
         defer { closeDatabase() }
 
@@ -152,30 +152,30 @@ actor PostalCodeRepository {
             print("Error preparing statement")
         }
 
-        var results: [PostalCodeModel] = []
+        var results: [PostalCode] = []
         while sqlite3_step(statement) == SQLITE_ROW {
-            let model = PostalCodeModel()
-            model.postalCode = String(cString: sqlite3_column_text(statement, 0))
-            model.stateH = String(cString: sqlite3_column_text(statement, 1))
-            model.cityTownH = String(cString: sqlite3_column_text(statement, 2))
-            model.streetH = String(cString: sqlite3_column_text(statement, 3))
-            model.stateK = String(cString: sqlite3_column_text(statement, 4))
-            model.cityTownK = String(cString: sqlite3_column_text(statement, 5))
-            model.streetK = String(cString: sqlite3_column_text(statement, 6))
-            results.append(model)
+            let postalCode = PostalCode()
+            postalCode.code = String(cString: sqlite3_column_text(statement, 0))
+            postalCode.stateH = String(cString: sqlite3_column_text(statement, 1))
+            postalCode.cityTownH = String(cString: sqlite3_column_text(statement, 2))
+            postalCode.streetH = String(cString: sqlite3_column_text(statement, 3))
+            postalCode.stateK = String(cString: sqlite3_column_text(statement, 4))
+            postalCode.cityTownK = String(cString: sqlite3_column_text(statement, 5))
+            postalCode.streetK = String(cString: sqlite3_column_text(statement, 6))
+            results.append(postalCode)
         }
 
-        var uniqueResults: [PostalCodeModel] = []
-        for model in results {
-            if uniqueResults.isEmpty || uniqueResults.last?.cityTownK != model.cityTownK {
-                uniqueResults.append(model)
+        var uniqueResults: [PostalCode] = []
+        for postalCode in results {
+            if uniqueResults.isEmpty || uniqueResults.last?.cityTownK != postalCode.cityTownK {
+                uniqueResults.append(postalCode)
             }
         }
 
         return uniqueResults
     }
 
-    func getStreetsByState(_ state: String, byCityAndTown cityTown: String) -> [[PostalCodeModel]] {
+    func getStreetsByState(_ state: String, byCityAndTown cityTown: String) -> [[PostalCode]] {
         guard openDatabase() != nil else { return [] }
         defer { closeDatabase() }
 
@@ -191,34 +191,34 @@ actor PostalCodeRepository {
         sqlite3_bind_text(statement, 1, (stateLikeQuery as NSString).utf8String, -1, nil)
         sqlite3_bind_text(statement, 2, (cityTownLikeQuery as NSString).utf8String, -1, nil)
 
-        var results: [PostalCodeModel] = []
+        var results: [PostalCode] = []
         while sqlite3_step(statement) == SQLITE_ROW {
-            let model = PostalCodeModel()
-            model.postalCode = String(cString: sqlite3_column_text(statement, 0))
-            model.stateH = String(cString: sqlite3_column_text(statement, 1))
-            model.cityTownH = String(cString: sqlite3_column_text(statement, 2))
-            model.streetH = String(cString: sqlite3_column_text(statement, 3))
-            model.stateK = String(cString: sqlite3_column_text(statement, 4))
-            model.cityTownK = String(cString: sqlite3_column_text(statement, 5))
-            model.streetK = String(cString: sqlite3_column_text(statement, 6))
-            results.append(model)
+            let postalCode = PostalCode()
+            postalCode.code = String(cString: sqlite3_column_text(statement, 0))
+            postalCode.stateH = String(cString: sqlite3_column_text(statement, 1))
+            postalCode.cityTownH = String(cString: sqlite3_column_text(statement, 2))
+            postalCode.streetH = String(cString: sqlite3_column_text(statement, 3))
+            postalCode.stateK = String(cString: sqlite3_column_text(statement, 4))
+            postalCode.cityTownK = String(cString: sqlite3_column_text(statement, 5))
+            postalCode.streetK = String(cString: sqlite3_column_text(statement, 6))
+            results.append(postalCode)
         }
 
-        var groupedResults: [[PostalCodeModel]] = []
-        var currentGroup: [PostalCodeModel] = []
+        var groupedResults: [[PostalCode]] = []
+        var currentGroup: [PostalCode] = []
 
-        for model in results {
+        for postalCode in results {
             if currentGroup.isEmpty {
-                currentGroup.append(model)
+                currentGroup.append(postalCode)
             } else {
                 let currentFirstChar = currentGroup.last?.streetH.first?.description ?? ""
-                let newFirstChar = model.streetH.first?.description ?? ""
+                let newFirstChar = postalCode.streetH.first?.description ?? ""
 
                 if currentFirstChar == newFirstChar {
-                    currentGroup.append(model)
+                    currentGroup.append(postalCode)
                 } else {
                     groupedResults.append(currentGroup)
-                    currentGroup = [model]
+                    currentGroup = [postalCode]
                 }
             }
         }
@@ -264,16 +264,16 @@ actor PostalCodeRepository {
         }
     }
 
-    private func divideByState(with array: [PostalCodeModel]) -> [[PostalCodeModel]] {
-        var grouped: [[PostalCodeModel]] = []
-        var currentGroup: [PostalCodeModel] = []
+    private func divideByState(with postalCodes: [PostalCode]) -> [[PostalCode]] {
+        var grouped: [[PostalCode]] = []
+        var currentGroup: [PostalCode] = []
 
-        for model in array {
-            if currentGroup.isEmpty || currentGroup.last?.stateK == model.stateK {
-                currentGroup.append(model)
+        for postalCode in postalCodes {
+            if currentGroup.isEmpty || currentGroup.last?.stateK == postalCode.stateK {
+                currentGroup.append(postalCode)
             } else {
                 grouped.append(currentGroup)
-                currentGroup = [model]
+                currentGroup = [postalCode]
             }
         }
 

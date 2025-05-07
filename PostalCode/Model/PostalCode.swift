@@ -1,5 +1,5 @@
 //
-//  PostalCodeModel.swift
+//  PostalCode.swift
 //  PostalCode
 //
 //  Created by Koichiro OCHIISHI on 2025/05/05.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-@objcMembers
-class PostalCodeModel: NSObject, NSSecureCoding, @unchecked Sendable {
-    var postalCode: String = ""  // 郵便番号
+@objc(PostalCodeModel)
+class PostalCode: NSObject, NSSecureCoding, @unchecked Sendable {
+    var code: String = ""  // 郵便番号
     var stateH: String = ""  // 都道府県（平仮名）
     var cityTownH: String = ""  // 市町村（平仮名）
     var streetH: String = ""  // 区群（平仮名）
@@ -25,7 +25,7 @@ class PostalCodeModel: NSObject, NSSecureCoding, @unchecked Sendable {
     }
 
     required init?(coder: NSCoder) {
-        postalCode = coder.decodeObject(of: NSString.self, forKey: "postalCode") as String? ?? ""
+        code = coder.decodeObject(of: NSString.self, forKey: "postalCode") as String? ?? ""
         stateH = coder.decodeObject(of: NSString.self, forKey: "stateH") as String? ?? ""
         cityTownH = coder.decodeObject(of: NSString.self, forKey: "cityTownH") as String? ?? ""
         streetH = coder.decodeObject(of: NSString.self, forKey: "streetH") as String? ?? ""
@@ -35,7 +35,7 @@ class PostalCodeModel: NSObject, NSSecureCoding, @unchecked Sendable {
     }
 
     func encode(with coder: NSCoder) {
-        coder.encode(postalCode, forKey: "postalCode")
+        coder.encode(code, forKey: "postalCode")
         coder.encode(stateH, forKey: "stateH")
         coder.encode(cityTownH, forKey: "cityTownH")
         coder.encode(streetH, forKey: "streetH")
@@ -51,8 +51,8 @@ class PostalCodeModel: NSObject, NSSecureCoding, @unchecked Sendable {
 
 // MARK: - Postal Code Formatting
 
-extension PostalCodeModel {
-    var formattedPostalCode: String {
-        "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
+extension PostalCode {
+    var formattedCode: String {
+        "\(code.prefix(3))-\(code.suffix(code.count - 3))"
     }
 }

@@ -12,36 +12,36 @@ class FavoriteRepository: NSObject {
 
     private static let favoriteKey = "favorite"
 
-    static func getFavorites() -> [PostalCodeModel] {
+    static func getFavorites() -> [PostalCode] {
         let defaults = UserDefaults.standard
         guard let favoriteData = defaults.array(forKey: favoriteKey) as? [Data] else {
             return []
         }
 
-        var favorites: [PostalCodeModel] = []
+        var favorites: [PostalCode] = []
         for data in favoriteData {
             do {
-                if let model = try NSKeyedUnarchiver.unarchivedObject(
-                    ofClass: PostalCodeModel.self, from: data)
+                if let postalCode = try NSKeyedUnarchiver.unarchivedObject(
+                    ofClass: PostalCode.self, from: data)
                 {
-                    favorites.append(model)
+                    favorites.append(postalCode)
                 }
             } catch {
-                print("Error unarchiving PostalCodeModel: \(error)")
+                print("Error unarchiving PostalCode: \(error)")
             }
         }
         return favorites
     }
 
-    static func addFavoritePostalCodeModel(_ model: PostalCodeModel) {
-        if !isExist(model) {
+    static func addFavorite(_ postalCode: PostalCode) {
+        if !isExist(postalCode) {
             var favorites = getFavorites()
-            favorites.append(model)
+            favorites.append(postalCode)
             saveFavorites(favorites)
         }
     }
 
-    static func deleteFavoritePostalCodeModel(at index: Int) {
+    static func deleteFavorite(at index: Int) {
         var favorites = getFavorites()
         if index < favorites.count {
             favorites.remove(at: index)
@@ -53,22 +53,22 @@ class FavoriteRepository: NSObject {
         saveFavorites([])
     }
 
-    static func isExist(_ model: PostalCodeModel) -> Bool {
+    static func isExist(_ postalCode: PostalCode) -> Bool {
         let favorites = getFavorites()
-        return favorites.contains { $0.postalCode == model.postalCode }
+        return favorites.contains { $0.code == postalCode.code }
     }
 
-    private static func saveFavorites(_ favorites: [PostalCodeModel]) {
+    private static func saveFavorites(_ favorites: [PostalCode]) {
         let defaults = UserDefaults.standard
         var favoriteData: [Data] = []
 
-        for model in favorites {
+        for postalCode in favorites {
             do {
                 let data = try NSKeyedArchiver.archivedData(
-                    withRootObject: model, requiringSecureCoding: true)
+                    withRootObject: postalCode, requiringSecureCoding: true)
                 favoriteData.append(data)
             } catch {
-                print("Error archiving PostalCodeModel: \(error)")
+                print("Error archiving PostalCode: \(error)")
             }
         }
 
