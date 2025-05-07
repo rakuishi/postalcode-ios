@@ -11,7 +11,14 @@ import UIKit
 class FavoriteViewController: BaseTableViewController {
 
     private var postalCodes: [PostalCode] = []
-    private var deleteButtonItem: UIBarButtonItem!
+    private lazy var deleteButtonItem: UIBarButtonItem = {
+        UIBarButtonItem(
+            title: "消去",
+            style: .plain,
+            target: self,
+            action: #selector(deleteAllData)
+        )
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +26,6 @@ class FavoriteViewController: BaseTableViewController {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
 
-        deleteButtonItem = UIBarButtonItem(
-            title: "消去", style: .plain, target: self, action: #selector(deleteAllData))
         navigationItem.leftBarButtonItem = deleteButtonItem
 
         reloadAllData()
@@ -102,15 +107,15 @@ class FavoriteViewController: BaseTableViewController {
         _ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
         forRowAt indexPath: IndexPath
     ) {
-        if editingStyle == .delete {
-            tableView.beginUpdates()
+        guard editingStyle == .delete else { return }
 
-            FavoriteRepository.deleteFavorite(at: indexPath.row)
-            postalCodes.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left)
+        tableView.beginUpdates()
 
-            tableView.endUpdates()
-        }
+        FavoriteRepository.deleteFavorite(at: indexPath.row)
+        postalCodes.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
+
+        tableView.endUpdates()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
