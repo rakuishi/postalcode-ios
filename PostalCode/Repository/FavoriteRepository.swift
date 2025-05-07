@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FavoriteRepository: NSObject {
+class FavoriteRepository {
 
     private static let favoriteKey = "favorite"
 
