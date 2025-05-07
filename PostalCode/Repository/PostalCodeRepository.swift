@@ -14,7 +14,7 @@ actor PostalCodeRepository {
     // MARK: - Properties
 
     // AboutViewController の「郵便番号データ」の日付を変えるのを忘れないように
-    private static let databaseName = "data_202408"
+    private static let databaseName = "data_202504"
 
     static let shared = PostalCodeRepository()
     private let databasePath: String

@@ -51,7 +51,7 @@ class AboutViewController:
                 cell.selectionStyle = .none
             case 1:
                 cell.textLabel?.text = "郵便番号データ"
-                cell.detailTextLabel?.text = "2024年8月30日"
+                cell.detailTextLabel?.text = "2025年4月30日"
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
             case 2:
