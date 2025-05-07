@@ -46,6 +46,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1615755F2DCB674300C9D6E2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				PostalCodeTests.swift,
+			);
+			target = 162380321815DCB9004C8D73 /* PostalCodeTests */;
+		};
 		163B17232DBE2833001D23D2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -53,18 +60,11 @@
 			);
 			target = 1623800E1815DCB9004C8D73 /* PostalCode */;
 		};
-		163B17282DBE2865001D23D2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				PostalCodeTests.m,
-			);
-			target = 162380321815DCB9004C8D73 /* PostalCodeTests */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		163B17102DBE2833001D23D2 /* PostalCode */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (163B17232DBE2833001D23D2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PostalCode; sourceTree = "<group>"; };
-		163B17262DBE2865001D23D2 /* PostalCodeTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (163B17282DBE2865001D23D2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PostalCodeTests; sourceTree = "<group>"; };
+		163B17262DBE2865001D23D2 /* PostalCodeTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (1615755F2DCB674300C9D6E2 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PostalCodeTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +188,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					162380321815DCB9004C8D73 = {
+						LastSwiftMigration = 1630;
 						TestTargetID = 1623800E1815DCB9004C8D73;
 					};
 				};
@@ -424,6 +425,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PostalCode.app/PostalCode";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -438,6 +440,8 @@
 				INFOPLIST_FILE = "PostalCodeTests/PostalCodeTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rakuishi.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -447,6 +451,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PostalCode.app/PostalCode";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -457,6 +462,7 @@
 				INFOPLIST_FILE = "PostalCodeTests/PostalCodeTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rakuishi.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
