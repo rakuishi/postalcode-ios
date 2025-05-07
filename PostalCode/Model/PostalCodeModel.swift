@@ -48,3 +48,11 @@ class PostalCodeModel: NSObject, NSSecureCoding, @unchecked Sendable {
         super.init()
     }
 }
+
+// MARK: - Postal Code Formatting
+
+extension PostalCodeModel {
+    var formattedPostalCode: String {
+        "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
+    }
+}

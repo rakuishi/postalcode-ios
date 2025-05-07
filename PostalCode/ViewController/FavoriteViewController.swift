@@ -65,11 +65,9 @@ class FavoriteViewController: BaseTableViewController {
         return "\(model.stateK) \(model.cityTownK) \(model.streetK)"
     }
 
-    private func detailTextLabelText(for model: PostalCodeModel) -> String {
-        let postalCode = model.postalCode
-        let formattedPostalCode =
-            "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
-        return formattedPostalCode
+    private func detailTextLabelText(for indexPath: IndexPath) -> String {
+        let model = postalCodes[indexPath.row]
+        return model.formattedPostalCode
     }
 
     // MARK: - Table View Data Source
@@ -89,7 +87,7 @@ class FavoriteViewController: BaseTableViewController {
         let postalCode = self.postalCodes[indexPath.row]
 
         cell.textLabel?.text = textLabelText(for: postalCode)
-        cell.detailTextLabel?.text = detailTextLabelText(for: postalCode)
+        cell.detailTextLabel?.text = detailTextLabelText(for: indexPath)
 
         return cell
     }

@@ -91,10 +91,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
 
     private func detailTextLabelText(for indexPath: IndexPath) -> String {
         let model = objects[indexPath.section][indexPath.row]
-        let postalCode = model.postalCode
-        let formattedPostalCode =
-            "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
-        return formattedPostalCode
+        return model.formattedPostalCode
     }
 
     // MARK: - Table View Data Source

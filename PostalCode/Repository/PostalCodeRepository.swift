@@ -13,20 +13,29 @@ actor PostalCodeRepository {
 
     // MARK: - Properties
 
-    static let shared = PostalCodeRepository(path: PostalCodeRepository.path())
+    // AboutViewController の「郵便番号データ」の日付を変えるのを忘れないように
+    private static let databaseName = "data_202408"
+
+    static let shared = PostalCodeRepository()
     private let databasePath: String
     private var database: OpaquePointer?
-    private static let databaseName = "data_202408"
 
     // MARK: - Initializer
 
-    private init(path: String) {
-        self.databasePath = path
+    private init() {
+        let temporaryDirectory = NSTemporaryDirectory()
+        databasePath = (temporaryDirectory as NSString).appendingPathComponent("\(Self.databaseName).sqlite")
 
+        setupDatabase()
+    }
+
+    // MARK: - Private Methods
+    
+    private nonisolated func setupDatabase() {
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: databasePath) {
             if let defaultDatabasePath = Bundle.main.path(
-                forResource: PostalCodeRepository.databaseName, ofType: "sqlite")
+                forResource: Self.databaseName, ofType: "sqlite")
             {
                 do {
                     try fileManager.copyItem(atPath: defaultDatabasePath, toPath: databasePath)

@@ -122,10 +122,8 @@ class DetailViewController:
     private func getSecondaryLabelText(for indexPath: IndexPath) -> String {
         switch indexPath.row {
         case 0:
-            let postalCode = postalCodeModel.postalCode
-            let formattedPostalCode =
-                "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
-            return formattedPostalCode
+            let postalCode = postalCodeModel.formattedPostalCode
+            return postalCode
         case 1:
             return
                 "\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)"
@@ -160,13 +158,12 @@ class DetailViewController:
         let viewController = MFMailComposeViewController()
         viewController.mailComposeDelegate = self
 
-        let postalCode = postalCodeModel.postalCode
-        let formattedPostalCode =
-            "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
+        let postalCode = postalCodeModel.formattedPostalCode
+        let address = "\(postalCodeModel.stateK)\(postalCodeModel.cityTownK)\(postalCodeModel.streetK)"
 
         let body = """
-            郵便番号：\(formattedPostalCode)
-            住所：\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)
+            郵便番号：\(postalCode)
+            住所：\(address)
             """
         viewController.setMessageBody(body, isHTML: false)
         present(viewController, animated: true, completion: nil)

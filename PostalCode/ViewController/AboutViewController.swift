@@ -20,14 +20,6 @@ class AboutViewController:
         case feedback
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -128,9 +120,9 @@ class AboutViewController:
     private func platform() -> String {
         var size: Int = 0
         sysctlbyname("hw.machine", nil, &size, nil, 0)
-        var machine = [CChar](repeating: 0, count: size)
+        var machine = [UInt8](repeating: 0, count: size)
         sysctlbyname("hw.machine", &machine, &size, nil, 0)
-        return String(cString: machine)
+        return String(decoding: machine, as: UTF8.self)
     }
 
     // MARK: - MFMailComposeViewControllerDelegate
