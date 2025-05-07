@@ -28,8 +28,7 @@ class SelectViewController: BaseTableViewController {
 
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.sectionIndexTrackingBackgroundColor = UIColor(
-            red: 206.0 / 255.0, green: 203.0 / 255.0, blue: 198.0 / 255.0, alpha: 0.2)
+        tableView.sectionIndexTrackingBackgroundColor = Color.sectionIndexBackground
 
         if selectedAddress != .state {
             navigationItem.leftBarButtonItem = nil

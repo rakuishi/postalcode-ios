@@ -20,8 +20,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.keyboardDismissMode = .onDrag
-        tableView.sectionIndexTrackingBackgroundColor = UIColor(
-            red: 206 / 255, green: 203 / 255, blue: 198 / 255, alpha: 0.2)
+        tableView.sectionIndexTrackingBackgroundColor = Color.sectionIndexBackground
 
         searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = self
@@ -30,8 +29,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         searchBar.tintColor = Color.primary
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.font = UIFont.systemFont(ofSize: 16)
-            textField.backgroundColor = UIColor(
-                red: 227 / 255, green: 228 / 255, blue: 230 / 255, alpha: 1.0)
+            textField.backgroundColor = Color.searchFieldBackground
         }
 
         navigationItem.titleView = searchBar
