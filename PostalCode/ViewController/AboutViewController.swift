@@ -7,10 +7,13 @@
 //
 
 import Foundation
-import UIKit
 import MessageUI
+import UIKit
 
-class AboutViewController: UITableViewController, @preconcurrency MFMailComposeViewControllerDelegate {
+class AboutViewController:
+    UITableViewController,
+    @preconcurrency MFMailComposeViewControllerDelegate
+{
 
     private enum Section: Int, CaseIterable {
         case about
@@ -41,14 +44,17 @@ class AboutViewController: UITableViewController, @preconcurrency MFMailComposeV
         }
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
         if indexPath.section == Section.about.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath)
-            
+
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "バージョン"
-                cell.detailTextLabel?.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+                cell.detailTextLabel?.text =
+                    Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
                 cell.accessoryType = .none
                 cell.selectionStyle = .none
             case 1:
@@ -69,7 +75,7 @@ class AboutViewController: UITableViewController, @preconcurrency MFMailComposeV
             default:
                 break
             }
-            
+
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeedbackCell", for: indexPath)
@@ -79,14 +85,16 @@ class AboutViewController: UITableViewController, @preconcurrency MFMailComposeV
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         if indexPath.section == Section.about.rawValue {
             if indexPath.row == 2 {
                 if let url = URL(string: "https://rakuishi.com") {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             } else if indexPath.row == 3 {
-                if let url = URL(string: "https://rakuishi.github.io/privacy-policy/postalcode.html") {
+                if let url = URL(
+                    string: "https://rakuishi.github.io/privacy-policy/postalcode.html")
+                {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
@@ -99,20 +107,21 @@ class AboutViewController: UITableViewController, @preconcurrency MFMailComposeV
 
     private func sendFeedback() {
         guard MFMailComposeViewController.canSendMail() else { return }
-        
+
         let composeViewController = MFMailComposeViewController()
         composeViewController.mailComposeDelegate = self
-        
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
+
+        let version =
+            Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
         var body = "\n\n\n"
         body += "Device: \(platform())\n"
         body += "iOS: \(UIDevice.current.systemVersion)\n"
         body += "App: 郵便番号検索くん \(version)"
-        
+
         composeViewController.setMessageBody(body, isHTML: false)
         composeViewController.setSubject("[郵便番号検索くん Feedback]")
         composeViewController.setToRecipients(["rakuishi@gmail.com"])
-        
+
         present(composeViewController, animated: true, completion: nil)
     }
 
@@ -126,7 +135,10 @@ class AboutViewController: UITableViewController, @preconcurrency MFMailComposeV
 
     // MARK: - MFMailComposeViewControllerDelegate
 
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    func mailComposeController(
+        _ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
         dismiss(animated: true, completion: nil)
     }
 

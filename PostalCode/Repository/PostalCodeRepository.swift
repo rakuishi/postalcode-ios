@@ -25,7 +25,9 @@ actor PostalCodeRepository {
 
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: databasePath) {
-            if let defaultDatabasePath = Bundle.main.path(forResource: PostalCodeRepository.databaseName, ofType: "sqlite") {
+            if let defaultDatabasePath = Bundle.main.path(
+                forResource: PostalCodeRepository.databaseName, ofType: "sqlite")
+            {
                 do {
                     try fileManager.copyItem(atPath: defaultDatabasePath, toPath: databasePath)
                 } catch {
@@ -63,15 +65,15 @@ actor PostalCodeRepository {
         defer { closeDatabase() }
 
         let sql = """
-        SELECT * FROM data WHERE
-        postal_code LIKE ? OR
-        state_h LIKE ? OR
-        city_town_h LIKE ? OR
-        street_h LIKE ? OR
-        state_k LIKE ? OR
-        city_town_k LIKE ? OR
-        street_k LIKE ?
-        """
+            SELECT * FROM data WHERE
+            postal_code LIKE ? OR
+            state_h LIKE ? OR
+            city_town_h LIKE ? OR
+            street_h LIKE ? OR
+            state_k LIKE ? OR
+            city_town_k LIKE ? OR
+            street_k LIKE ?
+            """
         guard let statement = prepareStatement(sql: sql) else { return [] }
         defer { finalizeStatement(statement) }
 
@@ -97,13 +99,10 @@ actor PostalCodeRepository {
         var filteredResults = results
         for query in queryComponents.dropFirst() {
             filteredResults = filteredResults.filter { model in
-                model.postalCode.contains(query) ||
-                model.stateH.contains(query) ||
-                model.cityTownH.contains(query) ||
-                model.streetH.contains(query) ||
-                model.stateK.contains(query) ||
-                model.cityTownK.contains(query) ||
-                model.streetK.contains(query)
+                model.postalCode.contains(query) || model.stateH.contains(query)
+                    || model.cityTownH.contains(query) || model.streetH.contains(query)
+                    || model.stateK.contains(query) || model.cityTownK.contains(query)
+                    || model.streetK.contains(query)
             }
         }
 
@@ -123,7 +122,7 @@ actor PostalCodeRepository {
             ["三重県", "滋賀県", "京都府", "大阪府", "兵庫県", "奈良県", "和歌山県"],
             ["鳥取県", "島根県", "岡山県", "広島県", "山口県"],
             ["徳島県", "香川県", "愛媛県", "高知県"],
-            ["福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"]
+            ["福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県", "沖縄県"],
         ]
     }
 
@@ -133,11 +132,14 @@ actor PostalCodeRepository {
 
         let sql = "SELECT * FROM data WHERE state_k LIKE ?"
         var statement: OpaquePointer?
-        guard sqlite3_prepare_v2(self.database, sql, -1, &statement, nil) == SQLITE_OK else { return [] }
+        guard sqlite3_prepare_v2(self.database, sql, -1, &statement, nil) == SQLITE_OK else {
+            return []
+        }
         defer { finalizeStatement(statement) }
 
         let likeQuery = "%\(state)%"
-        if sqlite3_bind_text(statement, 1, (likeQuery as NSString).utf8String, -1, nil) != SQLITE_OK {
+        if sqlite3_bind_text(statement, 1, (likeQuery as NSString).utf8String, -1, nil) != SQLITE_OK
+        {
             print("Error preparing statement")
         }
 
@@ -170,7 +172,9 @@ actor PostalCodeRepository {
 
         let sql = "SELECT * FROM data WHERE state_k LIKE ? AND city_town_k LIKE ?"
         var statement: OpaquePointer?
-        guard sqlite3_prepare_v2(self.database, sql, -1, &statement, nil) == SQLITE_OK else { return [] }
+        guard sqlite3_prepare_v2(self.database, sql, -1, &statement, nil) == SQLITE_OK else {
+            return []
+        }
         defer { finalizeStatement(statement) }
 
         let stateLikeQuery = "%\(state)%"

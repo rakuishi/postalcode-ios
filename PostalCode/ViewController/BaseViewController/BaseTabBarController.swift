@@ -13,16 +13,20 @@ class BaseTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleSearchQuery(_:)),
-                                               name: NSNotification.Name("handleSearchQuery"),
-                                               object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleSearchQuery(_:)),
+            name: NSNotification.Name("handleSearchQuery"),
+            object: nil
+        )
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self,
-                                                  name: NSNotification.Name("handleSearchQuery"),
-                                                  object: nil)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: NSNotification.Name("handleSearchQuery"),
+            object: nil
+        )
     }
 
     // MARK: - SearchViewController
@@ -30,7 +34,10 @@ class BaseTabBarController: UITabBarController {
     @objc private func handleSearchQuery(_ notification: Notification) {
         self.selectedIndex = 1
 
-        guard let navigationController = self.viewControllers?[self.selectedIndex] as? BaseNavigationController else {
+        guard
+            let navigationController = self.viewControllers?[self.selectedIndex]
+                as? BaseNavigationController
+        else {
             return
         }
 
@@ -43,7 +50,9 @@ class BaseTabBarController: UITabBarController {
 
     @objc private func afterDelayHandleSearchQuery(_ query: String) {
         guard let navigationController = self.viewControllers?[1] as? BaseNavigationController,
-              let searchViewController = navigationController.viewControllers.first as? SearchViewController else {
+            let searchViewController = navigationController.viewControllers.first
+                as? SearchViewController
+        else {
             return
         }
 

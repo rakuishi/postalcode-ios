@@ -6,10 +6,13 @@
 //  Copyright © 2025 OCHIISHI Koichiro. All rights reserved.
 //
 
-import UIKit
 import MessageUI
+import UIKit
 
-class DetailViewController: BaseTableViewController, @preconcurrency MFMailComposeViewControllerDelegate {
+class DetailViewController:
+    BaseTableViewController,
+    @preconcurrency MFMailComposeViewControllerDelegate
+{
 
     var postalCodeModel: PostalCodeModel!
 
@@ -41,13 +44,19 @@ class DetailViewController: BaseTableViewController, @preconcurrency MFMailCompo
         return 3
     }
 
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int)
+        -> String?
+    {
         return section == Section.info.rawValue ? "項目を長押しでコピーできます。" : nil
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
         if indexPath.section == Section.info.rawValue {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath) as! RightDetailTableViewCell
+            let cell =
+                tableView.dequeueReusableCell(withIdentifier: "InfoCell", for: indexPath)
+                as! RightDetailTableViewCell
             cell.primaryLabel.text = getPrimaryLabelText(for: indexPath)
             cell.secondaryLabel.text = getSecondaryLabelText(for: indexPath)
             return cell
@@ -82,13 +91,17 @@ class DetailViewController: BaseTableViewController, @preconcurrency MFMailCompo
         }
     }
 
-    override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    override func tableView(
+        _ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath,
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
         guard indexPath.section == Section.info.rawValue else { return nil }
 
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             let action = UIAction(title: "コピー", image: UIImage(systemName: "doc.on.doc")) { _ in
                 if let cell = tableView.cellForRow(at: indexPath) as? RightDetailTableViewCell {
-                    UIPasteboard.general.setValue(cell.secondaryLabel.text ?? "", forPasteboardType: "public.utf8-plain-text")
+                    UIPasteboard.general.setValue(
+                        cell.secondaryLabel.text ?? "", forPasteboardType: "public.utf8-plain-text")
                 }
             }
             return UIMenu(title: "", children: [action])
@@ -110,12 +123,15 @@ class DetailViewController: BaseTableViewController, @preconcurrency MFMailCompo
         switch indexPath.row {
         case 0:
             let postalCode = postalCodeModel.postalCode
-            let formattedPostalCode = "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
+            let formattedPostalCode =
+                "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
             return formattedPostalCode
         case 1:
-            return "\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)"
+            return
+                "\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)"
         case 2:
-            return "\(postalCodeModel.stateH) \(postalCodeModel.cityTownH) \(postalCodeModel.streetH)"
+            return
+                "\(postalCodeModel.stateH) \(postalCodeModel.cityTownH) \(postalCodeModel.streetH)"
         default:
             return ""
         }
@@ -124,7 +140,8 @@ class DetailViewController: BaseTableViewController, @preconcurrency MFMailCompo
     // MARK: - Actions
 
     private func jumpMap() {
-        let query = "\(postalCodeModel.stateK)\(postalCodeModel.cityTownK)\(postalCodeModel.streetK)"
+        let query =
+            "\(postalCodeModel.stateK)\(postalCodeModel.cityTownK)\(postalCodeModel.streetK)"
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let urlString: String
         if UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!) {
@@ -144,12 +161,13 @@ class DetailViewController: BaseTableViewController, @preconcurrency MFMailCompo
         viewController.mailComposeDelegate = self
 
         let postalCode = postalCodeModel.postalCode
-        let formattedPostalCode = "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
+        let formattedPostalCode =
+            "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
 
         let body = """
-        郵便番号：\(formattedPostalCode)
-        住所：\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)
-        """
+            郵便番号：\(formattedPostalCode)
+            住所：\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)
+            """
         viewController.setMessageBody(body, isHTML: false)
         present(viewController, animated: true, completion: nil)
     }
@@ -160,19 +178,25 @@ class DetailViewController: BaseTableViewController, @preconcurrency MFMailCompo
             FavoriteRepository.addFavoritePostalCodeModel(postalCodeModel)
         }
 
-        let address = "\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)"
-        let message = isAlreadyExist
+        let address =
+            "\(postalCodeModel.stateK) \(postalCodeModel.cityTownK) \(postalCodeModel.streetK)"
+        let message =
+            isAlreadyExist
             ? "\"\(address)\"は お気に入りに登録されています"
             : "\"\(address)\"が お気に入りに登録されました"
 
-        let alertController = UIAlertController(title: "確認", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "確認", message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - MFMailComposeViewControllerDelegate
 
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    func mailComposeController(
+        _ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
         dismiss(animated: true, completion: nil)
     }
 }

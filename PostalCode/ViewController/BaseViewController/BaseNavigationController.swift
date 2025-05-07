@@ -6,9 +6,9 @@
 //  Copyright © 2025 OCHIISHI Koichiro. All rights reserved.
 //
 
-import UIKit
-import GoogleMobileAds
 import AppTrackingTransparency
+import GoogleMobileAds
+import UIKit
 
 class BaseNavigationController: UINavigationController {
 
@@ -31,7 +31,8 @@ class BaseNavigationController: UINavigationController {
         super.viewDidAppear(animated)
 
         loadingView.frame = loadingViewFrame()
-        indicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        indicator.center = CGPoint(
+            x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
         bannerView.frame = adViewFrame()
     }
 
@@ -47,7 +48,8 @@ class BaseNavigationController: UINavigationController {
         view.addSubview(loadingView)
 
         indicator = UIActivityIndicatorView(style: .medium)
-        indicator.center = CGPoint(x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
+        indicator.center = CGPoint(
+            x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
         indicator.startAnimating()
         loadingView.addSubview(indicator)
     }
@@ -91,7 +93,8 @@ class BaseNavigationController: UINavigationController {
         let width = 320 * ratio
         let height = 50 * ratio
         let x = (bounds.width - width) / 2
-        let y = tabBarController != nil
+        let y =
+            tabBarController != nil
             ? bounds.height - safeAreaInsets.bottom - 49 - height
             : bounds.height - safeAreaInsets.bottom - height
 
@@ -111,9 +114,11 @@ class BaseNavigationController: UINavigationController {
     // MARK: - Safe Area Insets
 
     private func getSafeAreaInsets() -> UIEdgeInsets {
-        guard let window = UIApplication.shared.connectedScenes
+        guard
+            let window = UIApplication.shared.connectedScenes
                 .compactMap({ $0 as? UIWindowScene })
-                .first?.windows.first else {
+                .first?.windows.first
+        else {
             return .zero
         }
         return window.safeAreaInsets

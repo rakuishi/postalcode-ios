@@ -11,9 +11,9 @@ import UIKit
 class SelectViewController: BaseTableViewController {
 
     enum SelectedAddress: Int {
-        case state = 0    // 都道府県
-        case cityTown = 1 // 市町村
-        case street = 2   // 区群
+        case state = 0  // 都道府県
+        case cityTown = 1  // 市町村
+        case street = 2  // 区群
     }
 
     var selectedAddress: SelectedAddress = .state
@@ -28,7 +28,8 @@ class SelectViewController: BaseTableViewController {
 
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.sectionIndexTrackingBackgroundColor = UIColor(red: 206.0/255.0, green: 203.0/255.0, blue: 198.0/255.0, alpha: 0.2)
+        tableView.sectionIndexTrackingBackgroundColor = UIColor(
+            red: 206.0 / 255.0, green: 203.0 / 255.0, blue: 198.0 / 255.0, alpha: 0.2)
 
         if selectedAddress != .state {
             navigationItem.leftBarButtonItem = nil
@@ -45,12 +46,15 @@ class SelectViewController: BaseTableViewController {
                     self.sectionIndexTitles = fetchedSectionIndexTitles
                 case .cityTown:
                     guard let selectedState = selectedState else { return }
-                    let (fetchedObjects, fetchedSectionIndexTitles) = try await fetchCityTownData(selectedState: selectedState)
+                    let (fetchedObjects, fetchedSectionIndexTitles) = try await fetchCityTownData(
+                        selectedState: selectedState)
                     self.objects = fetchedObjects
                     self.sectionIndexTitles = fetchedSectionIndexTitles
                 case .street:
-                    guard let selectedState = selectedState, let selectedCityTown = selectedCityTown else { return }
-                    let (fetchedObjects, fetchedSectionIndexTitles) = try await fetchStreetData(selectedState: selectedState, selectedCityTown: selectedCityTown)
+                    guard let selectedState = selectedState, let selectedCityTown = selectedCityTown
+                    else { return }
+                    let (fetchedObjects, fetchedSectionIndexTitles) = try await fetchStreetData(
+                        selectedState: selectedState, selectedCityTown: selectedCityTown)
                     self.objects = fetchedObjects
                     self.sectionIndexTitles = fetchedSectionIndexTitles
                 }
@@ -77,12 +81,14 @@ class SelectViewController: BaseTableViewController {
     private func textLabelText(for indexPath: IndexPath) -> String {
         switch selectedAddress {
         case .state:
-            return (objects[indexPath.section] as? [String])? [indexPath.row] as? String ?? ""
+            return (objects[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
         case .cityTown:
             let model = objects[indexPath.section] as? PostalCodeModel
             return model?.cityTownK ?? ""
         case .street:
-            let model = (objects[indexPath.section] as? [PostalCodeModel])? [indexPath.row] as? PostalCodeModel
+            let model =
+                (objects[indexPath.section] as? [PostalCodeModel])?[indexPath.row]
+                as? PostalCodeModel
             return model?.streetK.isEmpty ?? true ? model?.cityTownK ?? "" : model?.streetK ?? ""
         }
     }
@@ -93,7 +99,9 @@ class SelectViewController: BaseTableViewController {
             let model = objects[indexPath.section] as? PostalCodeModel
             return model?.cityTownH ?? ""
         case .street:
-            let model = (objects[indexPath.section] as? [PostalCodeModel])? [indexPath.row] as? PostalCodeModel
+            let model =
+                (objects[indexPath.section] as? [PostalCodeModel])?[indexPath.row]
+                as? PostalCodeModel
             return model?.streetK.isEmpty ?? true ? model?.cityTownH ?? "" : model?.streetH ?? ""
         default:
             return ""
@@ -105,8 +113,10 @@ class SelectViewController: BaseTableViewController {
         let indexTitles = await PostalCodeRepository.shared.getStateSectionIndexTitles()
         return (states, indexTitles)
     }
-    
-    private func fetchCityTownData(selectedState: String) async throws -> ([PostalCodeModel], [String]) {
+
+    private func fetchCityTownData(selectedState: String) async throws -> (
+        [PostalCodeModel], [String]
+    ) {
         let cityTowns = await PostalCodeRepository.shared.getCityTownsByState(selectedState)
         let indexTitles = cityTowns.map { model in
             String(model.cityTownK.prefix(3))
@@ -114,8 +124,11 @@ class SelectViewController: BaseTableViewController {
         return (cityTowns, indexTitles)
     }
 
-    private func fetchStreetData(selectedState: String, selectedCityTown: String) async throws -> ([[PostalCodeModel]], [String]) {
-        let streets = await PostalCodeRepository.shared.getStreetsByState(selectedState, byCityAndTown: selectedCityTown)
+    private func fetchStreetData(selectedState: String, selectedCityTown: String) async throws -> (
+        [[PostalCodeModel]], [String]
+    ) {
+        let streets = await PostalCodeRepository.shared.getStreetsByState(
+            selectedState, byCityAndTown: selectedCityTown)
         let indexTitles = streets.map { models in
             guard let model = models.last else { return "" }
             return model.streetH.isEmpty ? "" : String(model.streetH.prefix(1))
@@ -140,14 +153,18 @@ class SelectViewController: BaseTableViewController {
         return sectionIndexTitles
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
+        -> String?
+    {
         if selectedAddress == .state {
             return sectionIndexTitles[section]
         }
         return nil
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = textLabelText(for: indexPath)
         cell.detailTextLabel?.text = detailTextLabelText(for: indexPath)
@@ -159,22 +176,32 @@ class SelectViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch selectedAddress {
         case .state:
-            let viewController = storyboard?.instantiateViewController(withIdentifier: "SelectViewController") as! SelectViewController
+            let viewController =
+                storyboard?.instantiateViewController(withIdentifier: "SelectViewController")
+                as! SelectViewController
             viewController.selectedAddress = .cityTown
-            viewController.selectedState = (objects[indexPath.section] as? [String])? [indexPath.row] as? String ?? ""
-            viewController.title = (objects[indexPath.section] as? [String])? [indexPath.row] as? String ?? ""
+            viewController.selectedState =
+                (objects[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
+            viewController.title =
+                (objects[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
             navigationController?.pushViewController(viewController, animated: true)
         case .cityTown:
             let model = objects[indexPath.section] as? PostalCodeModel
-            let viewController = storyboard?.instantiateViewController(withIdentifier: "SelectViewController") as! SelectViewController
+            let viewController =
+                storyboard?.instantiateViewController(withIdentifier: "SelectViewController")
+                as! SelectViewController
             viewController.selectedAddress = .street
             viewController.selectedState = selectedState
             viewController.selectedCityTown = model?.cityTownK
             viewController.title = model?.cityTownK
             navigationController?.pushViewController(viewController, animated: true)
         case .street:
-            let model = (objects[indexPath.section] as? [PostalCodeModel])? [indexPath.row] as? PostalCodeModel
-            let viewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+            let model =
+                (objects[indexPath.section] as? [PostalCodeModel])?[indexPath.row]
+                as? PostalCodeModel
+            let viewController =
+                storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
+                as! DetailViewController
             viewController.postalCodeModel = model
             navigationController?.pushViewController(viewController, animated: true)
         }

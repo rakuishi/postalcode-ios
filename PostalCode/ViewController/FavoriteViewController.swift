@@ -19,7 +19,8 @@ class FavoriteViewController: BaseTableViewController {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
 
-        deleteButtonItem = UIBarButtonItem(title: "消去", style: .plain, target: self, action: #selector(deleteAllData))
+        deleteButtonItem = UIBarButtonItem(
+            title: "消去", style: .plain, target: self, action: #selector(deleteAllData))
         navigationItem.leftBarButtonItem = deleteButtonItem
 
         reloadAllData()
@@ -45,13 +46,15 @@ class FavoriteViewController: BaseTableViewController {
     }
 
     @objc private func deleteAllData() {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(
+            title: nil, message: nil, preferredStyle: .actionSheet)
 
-        alertController.addAction(UIAlertAction(title: "すべての項目を削除", style: .destructive) { _ in
-            FavoriteRepository.deleteAllFavorite()
-            self.reloadAllData()
-            self.deleteButtonItem.isEnabled = false
-        })
+        alertController.addAction(
+            UIAlertAction(title: "すべての項目を削除", style: .destructive) { _ in
+                FavoriteRepository.deleteAllFavorite()
+                self.reloadAllData()
+                self.deleteButtonItem.isEnabled = false
+            })
 
         alertController.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
 
@@ -64,7 +67,8 @@ class FavoriteViewController: BaseTableViewController {
 
     private func detailTextLabelText(for model: PostalCodeModel) -> String {
         let postalCode = model.postalCode
-        let formattedPostalCode = "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
+        let formattedPostalCode =
+            "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
         return formattedPostalCode
     }
 
@@ -78,7 +82,9 @@ class FavoriteViewController: BaseTableViewController {
         return postalCodes.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let postalCode = self.postalCodes[indexPath.row]
 
@@ -94,7 +100,10 @@ class FavoriteViewController: BaseTableViewController {
         return true
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(
+        _ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
         if editingStyle == .delete {
             tableView.beginUpdates()
 
@@ -109,7 +118,9 @@ class FavoriteViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let postalCode = self.postalCodes[indexPath.row]
 
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let viewController =
+            storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
+            as! DetailViewController
         viewController.postalCodeModel = postalCode
         navigationController?.pushViewController(viewController, animated: true)
     }

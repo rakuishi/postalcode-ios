@@ -10,13 +10,13 @@ import Foundation
 
 @objcMembers
 class PostalCodeModel: NSObject, NSSecureCoding, @unchecked Sendable {
-    var postalCode: String = "" // 郵便番号
-    var stateH: String = ""     // 都道府県（平仮名）
+    var postalCode: String = ""  // 郵便番号
+    var stateH: String = ""  // 都道府県（平仮名）
     var cityTownH: String = ""  // 市町村（平仮名）
-    var streetH: String = ""    // 区群（平仮名）
-    var stateK: String = ""     // 都道府県（漢字）
+    var streetH: String = ""  // 区群（平仮名）
+    var stateK: String = ""  // 都道府県（漢字）
     var cityTownK: String = ""  // 市町村（漢字）
-    var streetK: String = ""    // 区群（漢字）
+    var streetK: String = ""  // 区群（漢字）
 
     // MARK: - NSSecureCoding
 

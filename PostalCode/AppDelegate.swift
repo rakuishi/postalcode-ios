@@ -6,8 +6,8 @@
 //  Copyright © 2025 OCHIISHI Koichiro. All rights reserved.
 //
 
-import UIKit
 import GoogleMobileAds
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -47,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         for pair in pairs {
             let elements = pair.components(separatedBy: "=")
             if let key = elements.first?.removingPercentEncoding,
-               let value = elements.last?.removingPercentEncoding {
+                let value = elements.last?.removingPercentEncoding
+            {
                 dict[key] = value
             }
         }

@@ -21,7 +21,9 @@ class FavoriteRepository: NSObject {
         var favorites: [PostalCodeModel] = []
         for data in favoriteData {
             do {
-                if let model = try NSKeyedUnarchiver.unarchivedObject(ofClass: PostalCodeModel.self, from: data) {
+                if let model = try NSKeyedUnarchiver.unarchivedObject(
+                    ofClass: PostalCodeModel.self, from: data)
+                {
                     favorites.append(model)
                 }
             } catch {
@@ -62,7 +64,8 @@ class FavoriteRepository: NSObject {
 
         for model in favorites {
             do {
-                let data = try NSKeyedArchiver.archivedData(withRootObject: model, requiringSecureCoding: true)
+                let data = try NSKeyedArchiver.archivedData(
+                    withRootObject: model, requiringSecureCoding: true)
                 favoriteData.append(data)
             } catch {
                 print("Error archiving PostalCodeModel: \(error)")

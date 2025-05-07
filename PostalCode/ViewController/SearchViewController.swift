@@ -20,7 +20,8 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableView.automaticDimension
         tableView.keyboardDismissMode = .onDrag
-        tableView.sectionIndexTrackingBackgroundColor = UIColor(red: 206/255, green: 203/255, blue: 198/255, alpha: 0.2)
+        tableView.sectionIndexTrackingBackgroundColor = UIColor(
+            red: 206 / 255, green: 203 / 255, blue: 198 / 255, alpha: 0.2)
 
         searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = self
@@ -29,7 +30,8 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         searchBar.tintColor = Color.primary
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.font = UIFont.systemFont(ofSize: 16)
-            textField.backgroundColor = UIColor(red: 227/255, green: 228/255, blue: 230/255, alpha: 1.0)
+            textField.backgroundColor = UIColor(
+                red: 227 / 255, green: 228 / 255, blue: 230 / 255, alpha: 1.0)
         }
 
         navigationItem.titleView = searchBar
@@ -75,7 +77,7 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
             self.tableView.reloadData()
         }
     }
-    
+
     private func performSearch(with query: String) async -> [[PostalCodeModel]] {
         return await PostalCodeRepository.shared.searchWithQuery(query)
     }
@@ -92,7 +94,8 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
     private func detailTextLabelText(for indexPath: IndexPath) -> String {
         let model = objects[indexPath.section][indexPath.row]
         let postalCode = model.postalCode
-        let formattedPostalCode = "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
+        let formattedPostalCode =
+            "\(postalCode.prefix(3))-\(postalCode.suffix(postalCode.count - 3))"
         return formattedPostalCode
     }
 
@@ -106,7 +109,9 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         return objects[section].count
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int)
+        -> String?
+    {
         return sectionIndexTitles[section]
     }
 
@@ -114,7 +119,9 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         return sectionIndexTitles
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = textLabelText(for: indexPath)
         cell.detailTextLabel?.text = detailTextLabelText(for: indexPath)
@@ -126,7 +133,9 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = objects[indexPath.section][indexPath.row]
 
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let viewController =
+            storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
+            as! DetailViewController
         viewController.postalCodeModel = model
         navigationController?.pushViewController(viewController, animated: true)
     }

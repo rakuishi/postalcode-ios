@@ -9,5 +9,7 @@
 import UIKit
 
 struct Color {
-    static let primary = UIColor(red: 234.0/255.0, green: 67.0/255.0, blue: 53.0/255.0, alpha: 1.0)
+    static let primary = UIColor(
+        red: 234.0 / 255.0, green: 67.0 / 255.0, blue: 53.0 / 255.0, alpha: 1.0
+    )
 }
