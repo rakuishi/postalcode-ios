@@ -19,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         MobileAds.shared.start(completionHandler: nil)
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let mainViewController = MainViewController()
+        window?.rootViewController = mainViewController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
