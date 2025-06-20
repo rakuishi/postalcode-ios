@@ -20,7 +20,7 @@ class SelectViewController: BaseTableViewController {
     var selectedState: String?
     var selectedCityTown: String?
 
-    private var objects: [Any] = []
+    private var sections: [Any] = []
     private var sectionIndexTitles: [String] = []
 
     override func viewDidLoad() {
@@ -41,20 +41,20 @@ class SelectViewController: BaseTableViewController {
                 switch selectedAddress {
                 case .state:
                     let (fetchedObjects, fetchedSectionIndexTitles) = try await fetchStateData()
-                    self.objects = fetchedObjects
+                    self.sections = fetchedObjects
                     self.sectionIndexTitles = fetchedSectionIndexTitles
                 case .cityTown:
                     guard let selectedState = selectedState else { return }
                     let (fetchedObjects, fetchedSectionIndexTitles) = try await fetchCityTownData(
                         selectedState: selectedState)
-                    self.objects = fetchedObjects
+                    self.sections = fetchedObjects
                     self.sectionIndexTitles = fetchedSectionIndexTitles
                 case .street:
                     guard let selectedState = selectedState, let selectedCityTown = selectedCityTown
                     else { return }
                     let (fetchedObjects, fetchedSectionIndexTitles) = try await fetchStreetData(
                         selectedState: selectedState, selectedCityTown: selectedCityTown)
-                    self.objects = fetchedObjects
+                    self.sections = fetchedObjects
                     self.sectionIndexTitles = fetchedSectionIndexTitles
                 }
                 (self.navigationController as? BaseNavigationController)?.stopLoading()
@@ -80,13 +80,13 @@ class SelectViewController: BaseTableViewController {
     private func textLabelText(for indexPath: IndexPath) -> String {
         switch selectedAddress {
         case .state:
-            return (objects[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
+            return (sections[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
         case .cityTown:
-            let postalCode = objects[indexPath.section] as? PostalCode
+            let postalCode = sections[indexPath.section] as? PostalCode
             return postalCode?.cityTownK ?? ""
         case .street:
             let postalCode =
-                (objects[indexPath.section] as? [PostalCode])?[indexPath.row]
+                (sections[indexPath.section] as? [PostalCode])?[indexPath.row]
                 as? PostalCode
             return postalCode?.streetK.isEmpty ?? true ? postalCode?.cityTownK ?? "" : postalCode?.streetK ?? ""
         }
@@ -95,11 +95,11 @@ class SelectViewController: BaseTableViewController {
     private func detailTextLabelText(for indexPath: IndexPath) -> String {
         switch selectedAddress {
         case .cityTown:
-            let postalCode = objects[indexPath.section] as? PostalCode
+            let postalCode = sections[indexPath.section] as? PostalCode
             return postalCode?.cityTownH ?? ""
         case .street:
             let postalCode =
-                (objects[indexPath.section] as? [PostalCode])?[indexPath.row]
+                (sections[indexPath.section] as? [PostalCode])?[indexPath.row]
                 as? PostalCode
             return postalCode?.streetK.isEmpty ?? true ? postalCode?.cityTownH ?? "" : postalCode?.streetH ?? ""
         default:
@@ -138,14 +138,14 @@ class SelectViewController: BaseTableViewController {
     // MARK: - Table View Data Source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return objects.count
+        return sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if selectedAddress == .cityTown {
             return 1
         }
-        return (objects[section] as? [Any])?.count ?? 0
+        return (sections[section] as? [Any])?.count ?? 0
     }
 
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -180,12 +180,12 @@ class SelectViewController: BaseTableViewController {
                 as! SelectViewController
             viewController.selectedAddress = .cityTown
             viewController.selectedState =
-                (objects[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
+                (sections[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
             viewController.title =
-                (objects[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
+                (sections[indexPath.section] as? [String])?[indexPath.row] as? String ?? ""
             navigationController?.pushViewController(viewController, animated: true)
         case .cityTown:
-            let postalCode = objects[indexPath.section] as? PostalCode
+            let postalCode = sections[indexPath.section] as? PostalCode
             let viewController =
                 storyboard?.instantiateViewController(withIdentifier: "SelectViewController")
                 as! SelectViewController
@@ -196,7 +196,7 @@ class SelectViewController: BaseTableViewController {
             navigationController?.pushViewController(viewController, animated: true)
         case .street:
             let postalCode =
-                (objects[indexPath.section] as? [PostalCode])?[indexPath.row]
+                (sections[indexPath.section] as? [PostalCode])?[indexPath.row]
                 as? PostalCode
             let viewController =
                 storyboard?.instantiateViewController(withIdentifier: "DetailViewController")
