@@ -21,23 +21,23 @@ class MainViewController: BaseTabBarController {
 
         if #available(iOS 18.0, *) {
             tabs = [
-                UITab(title: "都道府県", image: UIImage(named: "tabbar_select"), identifier: "tab_select") { _ in
+                UITab(title: "都道府県", image: UIImage(systemName: "list.bullet.rectangle"), identifier: "tab_select") { _ in
                     return selectNavigationViewController
                 },
-                UISearchTab(title: "検索", image: UIImage(named: "tabbar_search"), identifier: "tab_search") { _ in
+                UISearchTab(title: "検索", image: UIImage(systemName: "magnifyingglass"), identifier: "tab_search") { _ in
                     return searchNavigationViewController
                 },
-                UITab(title: "お気に入り", image: UIImage(named: "tabbar_star"), identifier: "tab_favorite") { _ in
+                UITab(title: "お気に入り", image: UIImage(systemName: "star"), identifier: "tab_favorite") { _ in
                     return favoriteNavigationViewController
                 },
             ]
         } else {
             selectNavigationViewController.tabBarItem =
-                    UITabBarItem(title: "都道府県", image: UIImage(named: "tabbar_select"), tag: 0)
-            favoriteNavigationViewController.tabBarItem =
-                    UITabBarItem(title: "お気に入り", image: UIImage(named: "tabbar_star"), tag: 1)
+                    UITabBarItem(title: "都道府県", image: UIImage(systemName: "list.bullet.rectangle"), tag: 0)
             searchNavigationViewController.tabBarItem =
-                    UITabBarItem(title: "検索", image: UIImage(named: "tabbar_search"), tag: 2)
+                    UITabBarItem(title: "検索", image: UIImage(systemName: "magnifyingglass"), tag: 1)
+            favoriteNavigationViewController.tabBarItem =
+                    UITabBarItem(title: "お気に入り", image: UIImage(systemName: "star"), tag: 2)
 
             self.viewControllers = [
                 selectNavigationViewController,

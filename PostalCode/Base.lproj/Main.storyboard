@@ -45,7 +45,7 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="都道府県" id="awC-xR-tLs">
-                        <barButtonItem key="leftBarButtonItem" image="navigationbar_about" id="uDY-60-114">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="info.circle" catalog="system" id="uDY-60-114">
                             <connections>
                                 <segue destination="AIe-1r-OKz" kind="modal" id="tFB-Ar-CQV"/>
                             </connections>
@@ -349,7 +349,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="navigationbar_about" width="24" height="24"/>
+        <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="tabbar_search" width="25" height="25"/>
         <image name="tabbar_select" width="25" height="25"/>
         <image name="tabbar_star" width="25" height="25"/>
