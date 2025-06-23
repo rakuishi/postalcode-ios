@@ -27,9 +27,6 @@ class SearchViewController: BaseTableViewController, UISearchBarDelegate {
         searchBar.placeholder = "1600000, 新宿区"
         searchBar.searchBarStyle = .default
         searchBar.tintColor = Color.primary
-        if let textField = searchBar.value(forKey: "searchField") as? UITextField {
-            textField.font = UIFont.systemFont(ofSize: 16)
-        }
 
         navigationItem.titleView = searchBar
         title = "検索"
