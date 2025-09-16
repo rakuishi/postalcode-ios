@@ -68,11 +68,13 @@ class BaseNavigationController: UINavigationController {
 
     private func loadingViewFrame() -> CGRect {
         let bounds = UIScreen.main.bounds
-        let safeAreaInsets = getSafeAreaInsets()
+        // UITabBarController が存在する場合は、既に SafeArea の考慮が含まれている
+        let safeAreaInsets = (tabBarController !=  nil) ? UIEdgeInsets.zero : getSafeAreaInsets()
         let statusBarHeight = safeAreaInsets.top
         let y = statusBarHeight + navigationBar.frame.size.height + 1
+        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
 
-        return CGRect(x: 0, y: y, width: bounds.width, height: bounds.height - y - 49)
+        return CGRect(x: 0, y: y, width: bounds.width, height: bounds.height - y - tabBarHeight)
     }
 
     // MARK: - BannerView
@@ -87,16 +89,15 @@ class BaseNavigationController: UINavigationController {
 
     private func adViewFrame() -> CGRect {
         let bounds = UIScreen.main.bounds
-        let safeAreaInsets = getSafeAreaInsets()
+        // UITabBarController が存在する場合は、既に SafeArea の考慮が含まれている
+        let safeAreaInsets = (tabBarController !=  nil) ? UIEdgeInsets.zero : getSafeAreaInsets()
 
         let ratio = min(bounds.width / 320, 1.5)
         let width = 320 * ratio
         let height = 50 * ratio
         let x = (bounds.width - width) / 2
-        let y =
-            tabBarController != nil
-            ? bounds.height - safeAreaInsets.bottom - 49 - height
-            : bounds.height - safeAreaInsets.bottom - height
+        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
+        let y = bounds.height - safeAreaInsets.bottom - tabBarHeight - height
 
         return CGRect(x: x, y: y, width: width, height: height)
     }
