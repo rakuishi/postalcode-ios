@@ -23,15 +23,38 @@ actor PostalCodeRepository {
     // MARK: - Initializer
 
     private init() {
-        let temporaryDirectory = NSTemporaryDirectory()
-        databasePath = (temporaryDirectory as NSString).appendingPathComponent("\(Self.databaseName).sqlite")
-
+        databasePath = Self.databasePathInApplicationSupport()
         setupDatabase()
     }
 
     // MARK: - Private Methods
-    
+
     private nonisolated func setupDatabase() {
+        let fileManager = FileManager.default
+        let directory = (databasePath as NSString).deletingLastPathComponent
+
+        // Create Application Support directory if it doesn't exist
+        if !fileManager.fileExists(atPath: directory) {
+            try? fileManager.createDirectory(atPath: directory, withIntermediateDirectories: true)
+        }
+
+        // Remove old database files from previous versions
+        if let contents = try? fileManager.contentsOfDirectory(atPath: directory) {
+            for file in contents where file.hasSuffix(".sqlite") && file != "\(Self.databaseName).sqlite" {
+                try? fileManager.removeItem(atPath: (directory as NSString).appendingPathComponent(file))
+            }
+        }
+
+        // Remove legacy database from tmp directory
+        let legacyPath = (NSTemporaryDirectory() as NSString).appendingPathComponent("\(Self.databaseName).sqlite")
+        if fileManager.fileExists(atPath: legacyPath) {
+            try? fileManager.removeItem(atPath: legacyPath)
+        }
+
+        copyDatabaseIfNeeded()
+    }
+
+    private nonisolated func copyDatabaseIfNeeded() {
         let fileManager = FileManager.default
         if !fileManager.fileExists(atPath: databasePath) {
             if let defaultDatabasePath = Bundle.main.path(
@@ -48,9 +71,14 @@ actor PostalCodeRepository {
 
     // MARK: - Class Methods
 
+    private static func databasePathInApplicationSupport() -> String {
+        let urls = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        let appSupportDir = urls[0].path
+        return (appSupportDir as NSString).appendingPathComponent("\(databaseName).sqlite")
+    }
+
     static func path() -> String {
-        let temporaryDirectory = NSTemporaryDirectory()
-        return (temporaryDirectory as NSString).appendingPathComponent("\(databaseName).sqlite")
+        return databasePathInApplicationSupport()
     }
 
     // MARK: - Instance Methods
@@ -233,6 +261,9 @@ actor PostalCodeRepository {
     // MARK: - Helper Methods
 
     private func openDatabase() -> OpaquePointer? {
+        // Re-copy database if the file was unexpectedly removed
+        copyDatabaseIfNeeded()
+
         if sqlite3_open(databasePath, &database) == SQLITE_OK {
             return database
         } else {
