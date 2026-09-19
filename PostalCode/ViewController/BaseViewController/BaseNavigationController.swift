@@ -12,11 +12,6 @@ import UIKit
 
 class BaseNavigationController: UINavigationController {
 
-    private enum Banner {
-        static let baseSize = CGSize(width: 320, height: 50)
-        static let maxScale: CGFloat = 1.5
-    }
-
     private let bannerView = BannerView(adSize: AdSizeBanner)
     private let loadingView = UIView()
     private let indicator = UIActivityIndicatorView(style: .medium)
@@ -24,6 +19,9 @@ class BaseNavigationController: UINavigationController {
     private var bannerWidthConstraint: NSLayoutConstraint!
     private var bannerHeightConstraint: NSLayoutConstraint!
     private var hasRequestedBanner = false
+    private var hasFallenBackToStandardBanner = false
+
+    private(set) var bannerSize: CGSize = .zero
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,13 +80,14 @@ class BaseNavigationController: UINavigationController {
     private func setupBannerView() {
         bannerView.adUnitID = "ca-app-pub-9983442877454265/2956248829"
         bannerView.rootViewController = self
+        bannerView.delegate = self
         bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
 
         bannerWidthConstraint = bannerView.widthAnchor.constraint(
-            equalToConstant: Banner.baseSize.width)
+            equalToConstant: cgSize(for: AdSizeBanner).width)
         bannerHeightConstraint = bannerView.heightAnchor.constraint(
-            equalToConstant: Banner.baseSize.height)
+            equalToConstant: cgSize(for: AdSizeBanner).height)
 
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -100,18 +99,22 @@ class BaseNavigationController: UINavigationController {
     }
 
     private func updateBannerSize() {
+        guard !hasFallenBackToStandardBanner else { return }
+
         let safeAreaInsets = view.safeAreaInsets
         let availableWidth = view.bounds.width - safeAreaInsets.left - safeAreaInsets.right
         guard availableWidth > 0 else { return }
 
-        let ratio = min(availableWidth / Banner.baseSize.width, Banner.maxScale)
-        let size = CGSize(
-            width: Banner.baseSize.width * ratio, height: Banner.baseSize.height * ratio)
+        // GoogleMobileAds は UIScreen を基準に画面に収まるか検証するため、その幅で頭打ちにする
+        let requestWidth = min(availableWidth, UIScreen.main.bounds.width)
+        let adSize = currentOrientationAnchoredAdaptiveBanner(width: requestWidth)
+        let size = cgSize(for: adSize)
 
-        if bannerWidthConstraint.constant != size.width {
+        if bannerSize != size {
+            bannerSize = size
             bannerWidthConstraint.constant = size.width
             bannerHeightConstraint.constant = size.height
-            bannerView.adSize = adSizeFor(cgSize: size)
+            bannerView.adSize = adSize
         }
 
         guard !hasRequestedBanner else { return }
@@ -127,5 +130,24 @@ class BaseNavigationController: UINavigationController {
                 await ATTrackingManager.requestTrackingAuthorization()
             }
         }
+    }
+}
+
+extension BaseNavigationController: BannerViewDelegate {
+    /// 要求したサイズが画面に収まらないと判定された場合だけ、確実に収まる標準サイズへ一度だけ下げる
+    /// no-fill や通信エラーは別のコードなので、その場合はサイズを変えない
+    func bannerView(_ bannerView: BannerView, didFailToReceiveAdWithError error: Error) {
+        guard !hasFallenBackToStandardBanner,
+            let requestError = error as? RequestError, requestError.code == .invalidRequest
+        else { return }
+
+        hasFallenBackToStandardBanner = true
+
+        let size = cgSize(for: AdSizeBanner)
+        bannerSize = size
+        bannerWidthConstraint.constant = size.width
+        bannerHeightConstraint.constant = size.height
+        bannerView.adSize = AdSizeBanner
+        bannerView.load(Request())
     }
 }

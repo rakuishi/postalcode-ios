@@ -14,11 +14,6 @@ class BaseTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let bounds = UIScreen.main.bounds
-        let adHeight = bounds.size.width / 320.0 * 50.0
-
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: adHeight, right: 0)
-        tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: adHeight, right: 0)
         tableView.sectionIndexColor = Color.primary
 
         NotificationCenter.default.addObserver(
@@ -35,6 +30,17 @@ class BaseTableViewController: UITableViewController {
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        let bannerHeight =
+            (navigationController as? BaseNavigationController)?.bannerSize.height ?? 0
+        guard tableView.contentInset.bottom != bannerHeight else { return }
+
+        tableView.contentInset.bottom = bannerHeight
+        tableView.verticalScrollIndicatorInsets.bottom = bannerHeight
     }
 
     deinit {
