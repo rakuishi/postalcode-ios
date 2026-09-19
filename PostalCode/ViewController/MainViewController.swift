@@ -67,13 +67,14 @@ class MainViewController: UITabBarController {
     // MARK: - SearchViewController
 
     @objc private func handleSearchQuery(_ notification: Notification) {
-        if (getSearchViewController() != nil) {
-            self.selectedIndex = searchTabIndex
-            navigationController?.popToRootViewController(animated: false)
+        guard let searchViewController = getSearchViewController() else { return }
 
-            if let query = (notification.object as? [String: Any])?["query"] as? String {
-                perform(#selector(afterDelayHandleSearchQuery(_:)), with: query, afterDelay: 0.0)
-            }
+        self.selectedIndex = searchTabIndex
+        // 検索タブが詳細画面を push していた場合に備えて、検索画面まで戻す
+        searchViewController.navigationController?.popToRootViewController(animated: false)
+
+        if let query = (notification.object as? [String: Any])?["query"] as? String {
+            perform(#selector(afterDelayHandleSearchQuery(_:)), with: query, afterDelay: 0.0)
         }
     }
 
