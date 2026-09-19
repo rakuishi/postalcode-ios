@@ -12,9 +12,18 @@ import UIKit
 
 class BaseNavigationController: UINavigationController {
 
-    private var bannerView: BannerView!
-    private var loadingView: UIView!
-    private var indicator: UIActivityIndicatorView!
+    private enum Banner {
+        static let baseSize = CGSize(width: 320, height: 50)
+        static let maxScale: CGFloat = 1.5
+    }
+
+    private let bannerView = BannerView(adSize: AdSizeBanner)
+    private let loadingView = UIView()
+    private let indicator = UIActivityIndicatorView(style: .medium)
+
+    private var bannerWidthConstraint: NSLayoutConstraint!
+    private var bannerHeightConstraint: NSLayoutConstraint!
+    private var hasRequestedBanner = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,31 +36,33 @@ class BaseNavigationController: UINavigationController {
         requestTrackingAuthorizationIfPossible()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        loadingView.frame = loadingViewFrame()
-        indicator.center = CGPoint(
-            x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
-        bannerView.frame = adViewFrame()
-    }
-
-    deinit {
-        bannerView = nil
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateBannerSize()
     }
 
     // MARK: - Loading
 
     private func setupLoadingView() {
-        loadingView = UIView(frame: loadingViewFrame())
         loadingView.alpha = 0
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(loadingView)
 
-        indicator = UIActivityIndicatorView(style: .medium)
-        indicator.center = CGPoint(
-            x: loadingView.frame.size.width / 2, y: loadingView.frame.size.height / 2)
         indicator.startAnimating()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
         loadingView.addSubview(indicator)
+
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            loadingView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            loadingView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+
+            loadingView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+
+            indicator.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor),
+        ])
     }
 
     func startLoading() {
@@ -66,40 +77,46 @@ class BaseNavigationController: UINavigationController {
         }
     }
 
-    private func loadingViewFrame() -> CGRect {
-        let bounds = UIScreen.main.bounds
-        // UITabBarController が存在する場合は、既に SafeArea の考慮が含まれている
-        let safeAreaInsets = (tabBarController !=  nil) ? UIEdgeInsets.zero : getSafeAreaInsets()
-        let statusBarHeight = safeAreaInsets.top
-        let y = statusBarHeight + navigationBar.frame.size.height + 1
-        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-
-        return CGRect(x: 0, y: y, width: bounds.width, height: bounds.height - y - tabBarHeight)
-    }
-
     // MARK: - BannerView
 
     private func setupBannerView() {
-        bannerView = BannerView(frame: adViewFrame())
         bannerView.adUnitID = "ca-app-pub-9983442877454265/2956248829"
         bannerView.rootViewController = self
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bannerView)
-        bannerView.load(Request())
+
+        bannerWidthConstraint = bannerView.widthAnchor.constraint(
+            equalToConstant: Banner.baseSize.width)
+        bannerHeightConstraint = bannerView.heightAnchor.constraint(
+            equalToConstant: Banner.baseSize.height)
+
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            bannerWidthConstraint,
+            bannerHeightConstraint,
+            bannerView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            bannerView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
+        ])
     }
 
-    private func adViewFrame() -> CGRect {
-        let bounds = UIScreen.main.bounds
-        // UITabBarController が存在する場合は、既に SafeArea の考慮が含まれている
-        let safeAreaInsets = (tabBarController !=  nil) ? UIEdgeInsets.zero : getSafeAreaInsets()
+    private func updateBannerSize() {
+        let safeAreaInsets = view.safeAreaInsets
+        let availableWidth = view.bounds.width - safeAreaInsets.left - safeAreaInsets.right
+        guard availableWidth > 0 else { return }
 
-        let ratio = min(bounds.width / 320, 1.5)
-        let width = 320 * ratio
-        let height = 50 * ratio
-        let x = (bounds.width - width) / 2
-        let tabBarHeight = tabBarController?.tabBar.frame.height ?? 0
-        let y = bounds.height - safeAreaInsets.bottom - tabBarHeight - height
+        let ratio = min(availableWidth / Banner.baseSize.width, Banner.maxScale)
+        let size = CGSize(
+            width: Banner.baseSize.width * ratio, height: Banner.baseSize.height * ratio)
 
-        return CGRect(x: x, y: y, width: width, height: height)
+        if bannerWidthConstraint.constant != size.width {
+            bannerWidthConstraint.constant = size.width
+            bannerHeightConstraint.constant = size.height
+            bannerView.adSize = adSizeFor(cgSize: size)
+        }
+
+        guard !hasRequestedBanner else { return }
+        hasRequestedBanner = true
+        bannerView.load(Request())
     }
 
     // MARK: - AppTrackingTransparency
@@ -110,18 +127,5 @@ class BaseNavigationController: UINavigationController {
                 await ATTrackingManager.requestTrackingAuthorization()
             }
         }
-    }
-
-    // MARK: - Safe Area Insets
-
-    private func getSafeAreaInsets() -> UIEdgeInsets {
-        guard
-            let window = UIApplication.shared.connectedScenes
-                .compactMap({ $0 as? UIWindowScene })
-                .first?.windows.first
-        else {
-            return .zero
-        }
-        return window.safeAreaInsets
     }
 }
